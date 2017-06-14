@@ -18,6 +18,7 @@ public class ListAvailableBooks {
         int index=0;
         for(Book book:bookList) {
             books[index]=book.toString();
+            index ++;
         }
         return books;
     }

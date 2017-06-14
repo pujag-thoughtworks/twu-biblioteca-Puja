@@ -22,11 +22,8 @@ public class ListAvailableBooksTest {
         bookList.add(book1);
         bookList.add(book2);
         ListAvailableBooks listBooks=new ListAvailableBooks(bookList);
-        System.out.println("book1"+ book1.toString());
         String[] expectedOutput={book1.toString(),book2.toString()};
-        System.out.println(expectedOutput);
         String[] actualOutput=listBooks.list();
-        System.out.println("book1 off"+actualOutput[0]);
         System.out.println(actualOutput);
 
         assertTrue(Arrays.equals(expectedOutput,actualOutput));
