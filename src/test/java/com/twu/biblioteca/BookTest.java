@@ -10,24 +10,31 @@ import static org.junit.Assert.assertEquals;
 public class BookTest {
 
     @Test
-    public void shouldTellItsNameWhenAsked() {
+    public void shouldGetName() {
         Book book=new Book("Harry Potter", "J.K Rowling", 2000);
         String bookName=book.getName();
         assertEquals("Harry Potter",bookName);
     }
 
     @Test
-    public void shouldTellItsAuthorNameWhenAsked() {
+    public void shouldGetAuthorName() {
         Book book=new Book("Harry Potter", "J.K Rowling", 2000);
         String authorName=book.getAuthor();
         assertEquals("J.K Rowling",authorName);
     }
 
     @Test
-    public void shouldTellItsYearOfPublishWhenAsked() {
+    public void shouldGetPublishingYear() {
         Book book=new Book("Harry Potter", "J.K Rowling", 2000);
         int yearOfPublication=book.getPublishingYear();
         assertEquals(2000,yearOfPublication);
+    }
+
+    @Test
+    public void shouldBeRepresentedInTermsOfItsAttributes() {
+        Book book=new Book("Harry Potter","J.K Rowling",2000);
+        String expectedOutput="Harry Potter" + " " + "J.K Rowling" + " " +2000;
+        assertEquals(expectedOutput,book.toString());
     }
 
 }

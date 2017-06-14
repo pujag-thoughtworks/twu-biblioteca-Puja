@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 public class WelcomePageTest {
 
     @Test
-    public  void ShouldReturnExpectedWelcomeMessage() {
+    public  void ShouldGetExpectedWelcomeMessage() {
         WelcomePage welcomePage=new WelcomePage("Hello");
         assertEquals("Hello",welcomePage.getWelcomeMessage());
     }

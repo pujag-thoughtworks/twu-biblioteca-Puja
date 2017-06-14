@@ -25,4 +25,8 @@ public class Book {
     public int getPublishingYear() {
         return publishingYear;
     }
+    public String toString() {
+        String bookRepresentation= name + " " +author+ " "+ publishingYear;
+        return  bookRepresentation;
+    }
 }
