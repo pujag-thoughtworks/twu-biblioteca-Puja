@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.Resources.BookStorage;
 import com.twu.mockModels.TestConsoleWriter;
 import org.junit.Test;
 
@@ -20,9 +21,10 @@ public class AppStarterTest {
         TestConsoleWriter consoleWriter=new TestConsoleWriter(new
                 BufferedWriter(new OutputStreamWriter(System.out)));
         AppStarter appStarter=new AppStarter(consoleWriter);
-        appStarter.start("Hello", new ArrayList<Book>());
         ArrayList<String> output=consoleWriter.getOutput();
-        String expectedOutput="Hello";
+        String expectedOutput="Welcome to Biblioteca";
+
+        appStarter.start();
 
         assertEquals(expectedOutput,output.get(0));
     }
@@ -30,19 +32,16 @@ public class AppStarterTest {
     @Test
     public void shouldDisplayListOfAvailableBooksAfterGreetingUser() {
 
-        ArrayList<Book> bookList=new ArrayList<>();
-        Book book1=new Book ("Harry Potter","J.K Rowling",2000);
-        Book book2=new Book("Notebook","Nicholas Spark",1999);
-        bookList.add(book1 );
-        bookList.add(book2);
+        BookStorage bookList=new BookStorage();
         TestConsoleWriter consoleWriter=new TestConsoleWriter(new
                 BufferedWriter(new OutputStreamWriter(System.out)));
         AppStarter appStarter=new AppStarter(consoleWriter);
-        appStarter.start("Hello",bookList);
         ArrayList<String> expectedOutput=new ArrayList<>();
-        expectedOutput.add("Hello");
-        expectedOutput.add(book1.toString());
-        expectedOutput.add(book2.toString());
+        expectedOutput.add("Welcome to Biblioteca");
+        for(Book book:bookList.getBookList())
+        expectedOutput.add(book.toString());
+
+        appStarter.start();
 
         assertEquals(expectedOutput,consoleWriter.getOutput());
     }

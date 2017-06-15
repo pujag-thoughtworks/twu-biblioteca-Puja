@@ -1,8 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.Resources.BookStorage;
 import com.twu.inputOutput.ConsoleWriter;
-
-import java.util.ArrayList;
 
 /**
  * Creates all necessary objects and calls required methods
@@ -15,10 +14,11 @@ public class AppStarter  {
         this.consoleWriter=consoleWriter;
     }
 
-    public void start(String welcomeMessage, ArrayList<Book> bookList) {
+    public void start() {
 
-        consoleWriter.write(welcomeMessage);
-        ListAvailableBooks listAvailableBooks=new ListAvailableBooks(bookList);
+        consoleWriter.write("Welcome to Biblioteca");
+        BookStorage bookList=new BookStorage();
+        ListAvailableBooks listAvailableBooks=new ListAvailableBooks(bookList.getBookList());
         listAvailableBooks.displayAvailableBooks(consoleWriter);
 
     }

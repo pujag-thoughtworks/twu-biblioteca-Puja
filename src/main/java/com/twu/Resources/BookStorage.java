@@ -7,9 +7,9 @@ import java.util.ArrayList;
 /**
  * Initial list of Books in Biblioteca
  */
-public class BookList {
+public class BookStorage {
     private ArrayList<Book> bookList;
-    public BookList() {
+    public BookStorage() {
         bookList=new ArrayList<>();
         bookList.add(new Book("Harry Potter","J.K Rowling",2000));
         bookList.add(new Book("The Notebook","Nicholas Spark",1999));

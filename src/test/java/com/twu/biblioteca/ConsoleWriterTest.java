@@ -14,7 +14,7 @@ import static junit.framework.TestCase.assertEquals;
 public class ConsoleWriterTest {
 
     @Test
-    public void shouldWriteTheProvidedMessageCorrectly() {
+    public void shouldWriteGivenInput() {
         StringWriter stringWriter=new StringWriter();
         ConsoleWriter consoleWriter=new ConsoleWriter(new BufferedWriter
                 (stringWriter));

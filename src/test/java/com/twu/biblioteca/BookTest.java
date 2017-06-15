@@ -31,7 +31,7 @@ public class BookTest {
     }
 
     @Test
-    public void shouldBeRepresentedInTermsOfItsAttributes() {
+    public void shouldBeRepresentedAsString() {
         Book book=new Book("Harry Potter","J.K Rowling",2000);
         String expectedOutput="Harry Potter" + " " + "J.K Rowling" + " " +2000;
         assertEquals(expectedOutput,book.toString());
