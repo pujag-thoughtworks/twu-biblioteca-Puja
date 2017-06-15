@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class BookList {
     private ArrayList<Book> bookList;
-    BookList() {
+    public BookList() {
         bookList=new ArrayList<>();
         bookList.add(new Book("Harry Potter","J.K Rowling",2000));
         bookList.add(new Book("The Notebook","Nicholas Spark",1999));

@@ -21,7 +21,7 @@ public class ConsoleWriterTest {
 
         consoleWriter.write("Hello world");
 
-        assertEquals("Hello world",stringWriter.toString());
+        assertEquals("Hello world\n",stringWriter.toString());
 
     }
 

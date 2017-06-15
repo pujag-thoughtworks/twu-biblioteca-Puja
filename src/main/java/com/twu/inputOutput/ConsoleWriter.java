@@ -20,6 +20,7 @@ public class ConsoleWriter  {
     public void write(String output) {
         try {
             bufferedWriter.write(output);
+            bufferedWriter.newLine();
             bufferedWriter.flush();
             writeCount++;
         }

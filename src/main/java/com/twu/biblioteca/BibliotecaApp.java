@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.Resources.BookList;
 import com.twu.inputOutput.ConsoleWriter;
 
 import java.io.BufferedWriter;
@@ -9,9 +10,12 @@ public class BibliotecaApp {
 
 
     public static void main(String[] args) {
-//        AppStarter appStarter=new AppStarter(new ConsoleWriter(new
-//                BufferedWriter(new OutputStreamWriter(System.out))));
-//        appStarter.start("Hello", bookList);
+        ConsoleWriter consoleWriter=new ConsoleWriter((new BufferedWriter(new
+                OutputStreamWriter(System.out))));
+        BookList bookList=new BookList();
+        AppStarter appStarter=new AppStarter(consoleWriter);
+        appStarter.start("Welcome",bookList.getBookList());
+
 
     }
 }
