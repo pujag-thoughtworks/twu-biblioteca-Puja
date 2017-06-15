@@ -2,6 +2,7 @@ package com.twu.inputOutput;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Output Writer for writing outputs.
@@ -9,6 +10,7 @@ import java.io.IOException;
 public class ConsoleWriter implements OutputWriter {
 
     BufferedWriter bufferedWriter;
+    int writeCount=0;
 
     public ConsoleWriter(BufferedWriter bufferedWriter) {
         this.bufferedWriter=bufferedWriter;
@@ -19,9 +21,16 @@ public class ConsoleWriter implements OutputWriter {
         try {
             bufferedWriter.write(output);
             bufferedWriter.flush();
+            writeCount++;
         }
         catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void write(ArrayList<String> list) {
+//        for(String str:list)
+//            write(str);
+
     }
 }

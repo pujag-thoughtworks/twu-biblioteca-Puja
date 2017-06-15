@@ -1,9 +1,11 @@
 package com.twu.biblioteca;
 
+import com.twu.inputOutput.ConsoleWriter;
+
 import java.util.ArrayList;
 
 /**
- * List the books with the necessary details
+ * List the available books with the necessary details
  */
 public class ListAvailableBooks {
 
@@ -13,13 +15,9 @@ public class ListAvailableBooks {
         this.bookList=bookList;
     }
 
-    public String[] list() {
-        String[] books=new String[bookList.size()];
-        int index=0;
-        for(Book book:bookList) {
-            books[index]=book.toString();
-            index ++;
-        }
-        return books;
+
+    public void displayAvailableBooks(ConsoleWriter consoleWriter) {
+        for(Book book:bookList)
+            consoleWriter.write(book.toString());
     }
 }

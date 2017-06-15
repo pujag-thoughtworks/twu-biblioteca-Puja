@@ -13,14 +13,6 @@ public class WelcomePage {
         this.welcomeMessage = welcomeMessage;
     }
 
-    public String getWelcomeMessage() {
-        return welcomeMessage;
-    }
-
-    public void printWelcomeMessage() {
-        System.out.println(welcomeMessage);
-    }
-
     public void writeWelcomeMessage(OutputWriter outputWriter ) {
         outputWriter.write(welcomeMessage);
 

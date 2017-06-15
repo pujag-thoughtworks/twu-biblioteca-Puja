@@ -14,12 +14,6 @@ import static org.junit.Assert.*;
 public class WelcomePageTest {
 
     @Test
-    public  void ShouldGetExpectedWelcomeMessage() {
-        WelcomePage welcomePage=new WelcomePage("Hello");
-        assertEquals("Hello",welcomePage.getWelcomeMessage());
-    }
-
-    @Test
     public void shouldWriteWelcomeMessageToDesiredOutputStream() {
         WelcomePage welcomePage=new WelcomePage("Hello");
         StringWriter stringWriter=new StringWriter();
@@ -28,7 +22,7 @@ public class WelcomePageTest {
         welcomePage.writeWelcomeMessage(new ConsoleWriter
                 (bufferedWriter));
 
-        assertEquals("Hello",stringWriter);
+        assertEquals("Hello",stringWriter.toString());
     }
 
 
