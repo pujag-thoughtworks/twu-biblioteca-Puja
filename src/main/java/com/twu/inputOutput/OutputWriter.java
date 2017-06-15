@@ -3,6 +3,6 @@ package com.twu.inputOutput;
 /**
  * defines structure for output writers
  */
-public interface outputWriter {
+public interface OutputWriter {
     void write(String output);
 }

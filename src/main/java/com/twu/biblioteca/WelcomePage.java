@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.inputOutput.OutputWriter;
+
 /**
  * Structure of welcome page
  */
@@ -17,5 +19,10 @@ public class WelcomePage {
 
     public void printWelcomeMessage() {
         System.out.println(welcomeMessage);
+    }
+
+    public void writeWelcomeMessage(OutputWriter outputWriter ) {
+        outputWriter.write(welcomeMessage);
+
     }
 }
