@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.mockModels.TestConsoleWriter;
 import org.junit.Test;
 
 import java.io.BufferedWriter;

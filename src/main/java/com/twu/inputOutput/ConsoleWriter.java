@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Output Writer for writing outputs.
  */
-public class ConsoleWriter implements OutputWriter {
+public class ConsoleWriter  {
 
     BufferedWriter bufferedWriter;
     int writeCount=0;
@@ -16,7 +16,7 @@ public class ConsoleWriter implements OutputWriter {
         this.bufferedWriter=bufferedWriter;
     }
 
-    @Override
+
     public void write(String output) {
         try {
             bufferedWriter.write(output);
