@@ -18,8 +18,8 @@ public class AppStarter  {
 
         consoleWriter.write("Welcome to Biblioteca");
         BookStorage bookList=new BookStorage();
-        ListAvailableBooks listAvailableBooks=new ListAvailableBooks(bookList.getBookList());
-        listAvailableBooks.displayAvailableBooks(consoleWriter);
+        ListAvailableBooks listAvailableBooks=new ListAvailableBooks();
+        listAvailableBooks.display(consoleWriter);
 
     }
 }

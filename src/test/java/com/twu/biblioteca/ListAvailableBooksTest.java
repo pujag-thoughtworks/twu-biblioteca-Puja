@@ -1,9 +1,11 @@
 package com.twu.biblioteca;
 
+import com.twu.Resources.BookStorage;
 import com.twu.mockModels.TestConsoleWriter;
 import org.junit.Test;
 
 import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
 
@@ -17,21 +19,20 @@ public class ListAvailableBooksTest {
 
     @Test
     public void shouldWriteAllBooksFromList() {
-        ArrayList<Book> bookList=new ArrayList<>();
-        Book book1=new Book("Harry Potter","JK Rowling", 2000);
-        Book book2=new Book("A Walk To Remember","Nicholas Spark",1999);
-        bookList.add(book1);
-        bookList.add(book2);
-        ListAvailableBooks listAvailableBooks=new ListAvailableBooks(bookList);
-        StringWriter stringWriter=new StringWriter();
-        TestConsoleWriter consoleWriter=new TestConsoleWriter(new BufferedWriter(stringWriter));
-        ArrayList<String> expectedOutput=new ArrayList<>();
-        expectedOutput.add(book1.toString());
-        expectedOutput.add(book2.toString());
 
-        listAvailableBooks.displayAvailableBooks(consoleWriter);
+        BookStorage bookStorage=new BookStorage();
+        ListAvailableBooks listAvailableBooks = new ListAvailableBooks();
+        TestConsoleWriter consoleWriter = new TestConsoleWriter(new
+                BufferedWriter(new OutputStreamWriter(System.out)));
+        ArrayList<String> expectedOutput = new ArrayList<>();
+        for(Book book:bookStorage.getBookList())
+             expectedOutput.add(book.toString());
 
-        assertEquals(expectedOutput,consoleWriter.getOutput());
+        listAvailableBooks.display(consoleWriter);
+
+        assertEquals(expectedOutput, consoleWriter.getOutput());
 
     }
+
+
 }
