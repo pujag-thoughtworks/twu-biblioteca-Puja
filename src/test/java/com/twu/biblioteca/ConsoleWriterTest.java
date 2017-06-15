@@ -25,12 +25,5 @@ public class ConsoleWriterTest {
 
     }
 
-   /* @Test
-    public void shouldWriteEachMessageInTheList() {
-        StringWriter stringWriter=new StringWriter();
-        ConsoleWriter consoleWriter=new ConsoleWriter(new BufferedWriter
-                (stringWriter));
-        ArrayList<String>
-        consoleWriter.write();
-    } */
+
 }
