@@ -6,8 +6,8 @@ import org.junit.Test;
 
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
-import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -24,7 +24,7 @@ public class ListAvailableBooksTest {
         ListAvailableBooks listAvailableBooks = new ListAvailableBooks();
         TestConsoleWriter consoleWriter = new TestConsoleWriter(new
                 BufferedWriter(new OutputStreamWriter(System.out)));
-        ArrayList<String> expectedOutput = new ArrayList<>();
+        List<String> expectedOutput = new ArrayList<>();
         for(Book book:bookStorage.getBookList())
              expectedOutput.add(book.toString());
 

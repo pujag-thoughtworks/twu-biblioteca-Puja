@@ -4,6 +4,7 @@ import com.twu.inputOutput.ConsoleWriter;
 
 import java.io.BufferedWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by pujag on 6/15/17.
@@ -22,7 +23,7 @@ public class TestConsoleWriter extends ConsoleWriter {
         output.add(str);
     }
 
-    public ArrayList<String> getOutput() {
+    public List<String> getOutput() {
         return output;
     }
 }

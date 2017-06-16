@@ -3,6 +3,7 @@ package com.twu.Resources;
 import com.twu.biblioteca.Book;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Initial list of Books in Biblioteca
@@ -17,7 +18,7 @@ public class BookStorage {
         bookList.add(new Book("Concepts of Physics","H.C Verma",1985));
     }
 
-    public ArrayList<Book> getBookList() {
+    public List<Book> getBookList() {
         return bookList;
     }
 }

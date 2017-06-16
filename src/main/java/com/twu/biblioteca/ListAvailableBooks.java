@@ -4,13 +4,14 @@ import com.twu.Resources.BookStorage;
 import com.twu.inputOutput.ConsoleWriter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * List the available books with the necessary details
  */
 public class ListAvailableBooks implements MenuItem {
 
-    private ArrayList<Book> bookList;
+    private List<Book> bookList;
 
     public ListAvailableBooks() {
         BookStorage bookStorage=new BookStorage();

@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import static junit.framework.TestCase.*;
 
@@ -36,8 +37,8 @@ public class AppStarterTest {
         TestConsoleWriter consoleWriter=new TestConsoleWriter(new
                 BufferedWriter(new OutputStreamWriter(System.out)));
         AppStarter appStarter=new AppStarter(consoleWriter);
-        ArrayList<String> expectedOutput=new ArrayList<>();
-        expectedOutput.add("Welcome to Biblioteca");
+        List<String> expectedOutput=new ArrayList<>();
+        expectedOutput.add(AppStarter.WELCOME_MESSAGE);
         for(Book book:bookList.getBookList())
         expectedOutput.add(book.toString());
 
