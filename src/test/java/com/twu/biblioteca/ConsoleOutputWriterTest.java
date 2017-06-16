@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-import com.twu.inputOutput.ConsoleWriter;
+import com.twu.inputOutput.ConsoleOutputWriter;
 import org.junit.Test;
 
 import java.io.BufferedWriter;
@@ -11,15 +11,15 @@ import static junit.framework.TestCase.assertEquals;
 /**
  * Created by pujag on 6/15/17.
  */
-public class ConsoleWriterTest {
+public class ConsoleOutputWriterTest {
 
     @Test
     public void shouldWriteGivenInput() {
         StringWriter stringWriter=new StringWriter();
-        ConsoleWriter consoleWriter=new ConsoleWriter(new BufferedWriter
+        ConsoleOutputWriter consoleOutputWriter =new ConsoleOutputWriter(new BufferedWriter
                 (stringWriter));
 
-        consoleWriter.write("Hello world");
+        consoleOutputWriter.write("Hello world");
 
         assertEquals("Hello world\n",stringWriter.toString());
 

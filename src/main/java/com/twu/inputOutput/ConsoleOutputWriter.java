@@ -6,12 +6,12 @@ import java.io.IOException;
 /**
  * Output Writer for writing outputs.
  */
-public class ConsoleWriter  {
+public class ConsoleOutputWriter implements OutputWriter {
 
     BufferedWriter bufferedWriter;
     int writeCount=0;
 
-    public ConsoleWriter(BufferedWriter bufferedWriter) {
+    public ConsoleOutputWriter(BufferedWriter bufferedWriter) {
         this.bufferedWriter=bufferedWriter;
     }
 

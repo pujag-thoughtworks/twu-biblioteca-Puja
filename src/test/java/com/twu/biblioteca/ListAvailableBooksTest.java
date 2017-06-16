@@ -1,11 +1,9 @@
 package com.twu.biblioteca;
 
 import com.twu.Resources.BookStorage;
-import com.twu.mockModels.TestConsoleWriter;
+import com.twu.mockModels.TestOutputWriter;
 import org.junit.Test;
 
-import java.io.BufferedWriter;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 

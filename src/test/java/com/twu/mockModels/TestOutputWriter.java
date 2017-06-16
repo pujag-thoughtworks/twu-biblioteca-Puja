@@ -1,20 +1,20 @@
 package com.twu.mockModels;
 
-import com.twu.inputOutput.ConsoleWriter;
+import com.twu.inputOutput.ConsoleOutputWriter;
+import com.twu.inputOutput.OutputWriter;
 
 import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by pujag on 6/15/17.
+ * Mocks behaviour of consoleOutputWriter
  */
-public class TestConsoleWriter extends ConsoleWriter {
+public class TestOutputWriter implements OutputWriter {
 
     ArrayList<String> output;
 
-    public TestConsoleWriter(BufferedWriter bufferedWriter) {
-        super(bufferedWriter);
+    public TestOutputWriter() {
         output=new ArrayList<>();
     }
 
