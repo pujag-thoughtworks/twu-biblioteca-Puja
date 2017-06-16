@@ -1,10 +1,11 @@
 package com.twu.biblioteca;
 
-import com.twu.inputOutput.ConsoleWriter;
+import com.twu.inputOutput.ConsoleOutputWriter;
 
 /**
  * Interface for the various menus.
  */
 public interface MenuItem {
-    public void display(ConsoleWriter consoleWriter);
+    public void showContent();
+    public String getMenuName();
 }

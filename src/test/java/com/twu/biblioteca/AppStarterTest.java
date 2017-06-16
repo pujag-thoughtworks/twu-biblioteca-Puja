@@ -1,11 +1,9 @@
 package com.twu.biblioteca;
 
-import com.twu.Resources.BookStorage;
-import com.twu.mockModels.TestConsoleWriter;
+import com.twu.mockModels.TestInputReader;
+import com.twu.mockModels.TestOutputWriter;
 import org.junit.Test;
 
-import java.io.BufferedWriter;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,31 +17,32 @@ public class AppStarterTest {
     @Test
     public void shouldWriteWelcomeMessage() {
 
-        TestConsoleWriter consoleWriter=new TestConsoleWriter(new
-                BufferedWriter(new OutputStreamWriter(System.out)));
-        AppStarter appStarter=new AppStarter(consoleWriter);
-        ArrayList<String> output=consoleWriter.getOutput();
-        String expectedOutput="Welcome to Biblioteca";
+        TestOutputWriter outputWriter=new TestOutputWriter();
+        TestInputReader inputReader=new TestInputReader("1");
+        AppStarter appStarter=new AppStarter(inputReader,outputWriter);
+        List<String> output=outputWriter.getOutput();
 
         appStarter.start();
-
-        assertEquals(expectedOutput,output.get(0));
+        assertEquals(appStarter.WELCOME_MESSAGE,output.get(0));
     }
 
     @Test
-    public void shouldDisplayListOfAvailableBooksAfterGreetingUser() {
+    public void shouldDisplayMenuAfterGreetingUser() {
 
-        BookStorage bookList=new BookStorage();
-        TestConsoleWriter consoleWriter=new TestConsoleWriter(new
-                BufferedWriter(new OutputStreamWriter(System.out)));
-        AppStarter appStarter=new AppStarter(consoleWriter);
-        List<String> expectedOutput=new ArrayList<>();
-        expectedOutput.add(AppStarter.WELCOME_MESSAGE);
-        for(Book book:bookList.getBookList())
-        expectedOutput.add(book.toString());
+        TestInputReader inputReader=new TestInputReader("1");
+        TestOutputWriter outputWriter=new TestOutputWriter();
+        TestOutputWriter testOutputWriter=new TestOutputWriter();
+        AppStarter appStarter=new AppStarter(inputReader,outputWriter);
+        MainMenu mainMenu=new MainMenu(inputReader,testOutputWriter);
+        mainMenu.addMenuItems(new ListAvailableBooks(testOutputWriter));
+        mainMenu.display();
+        mainMenu.loadSelectedMenu();
+        ArrayList<String> expectedOutput=new ArrayList<>();
+        expectedOutput.add(appStarter.WELCOME_MESSAGE);
+        expectedOutput.addAll(testOutputWriter.getOutput());
 
         appStarter.start();
 
-        assertEquals(expectedOutput,consoleWriter.getOutput());
+        assertEquals(expectedOutput,outputWriter.getOutput());
     }
 }

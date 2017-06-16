@@ -1,25 +1,32 @@
 package com.twu.biblioteca;
 
-import com.twu.Resources.BookStorage;
-import com.twu.inputOutput.ConsoleWriter;
+import com.twu.inputOutput.InputReader;
+import com.twu.inputOutput.OutputWriter;
 
 /**
  * Creates all necessary objects and calls required methods
  */
-public class AppStarter  {
+public class AppStarter {
 
-    ConsoleWriter consoleWriter;
+    private OutputWriter outputWriter;
+    private InputReader inputReader;
+    public static final String WELCOME_MESSAGE = "Welcome to Biblioteca";
 
-    AppStarter(ConsoleWriter consoleWriter) {
-        this.consoleWriter=consoleWriter;
+    AppStarter(InputReader inputReader,OutputWriter outputWriter) {
+        this.outputWriter = outputWriter;
+        this.inputReader = inputReader;
     }
 
     public void start() {
 
-        consoleWriter.write("Welcome to Biblioteca");
-        BookStorage bookList=new BookStorage();
-        ListAvailableBooks listAvailableBooks=new ListAvailableBooks();
-        listAvailableBooks.display(consoleWriter);
+        outputWriter.write(WELCOME_MESSAGE);
+
+        MainMenu menu = new MainMenu(inputReader,outputWriter);
+        ListAvailableBooks listAvailableBooks = new ListAvailableBooks(outputWriter);
+        menu.addMenuItems(listAvailableBooks);
+        menu.display();
+        menu.loadSelectedMenu();
+
 
     }
 }
