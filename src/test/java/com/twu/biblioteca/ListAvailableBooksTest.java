@@ -19,16 +19,26 @@ public class ListAvailableBooksTest {
     public void shouldWriteAllBooksFromList() {
 
         BookStorage bookStorage=new BookStorage();
-        ListAvailableBooks listAvailableBooks = new ListAvailableBooks();
-        TestConsoleWriter consoleWriter = new TestConsoleWriter(new
-                BufferedWriter(new OutputStreamWriter(System.out)));
+        TestOutputWriter consoleWriter = new TestOutputWriter();
+        ListAvailableBooks listAvailableBooks = new ListAvailableBooks(consoleWriter);
         List<String> expectedOutput = new ArrayList<>();
         for(Book book:bookStorage.getBookList())
              expectedOutput.add(book.toString());
 
-        listAvailableBooks.display(consoleWriter);
+        listAvailableBooks.showContent();
 
         assertEquals(expectedOutput, consoleWriter.getOutput());
+    }
+
+    @Test
+    public void shouldGetMenuItemsName() {
+
+        TestOutputWriter consoleWriter = new TestOutputWriter();
+        ListAvailableBooks listAvailableBooks=new ListAvailableBooks(consoleWriter);
+
+        String menuName=listAvailableBooks.getMenuName();
+
+        assertEquals("ListAvailableBooks",menuName);
 
     }
 

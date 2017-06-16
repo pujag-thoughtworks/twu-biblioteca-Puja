@@ -1,9 +1,8 @@
 package com.twu.biblioteca;
 
 import com.twu.Resources.BookStorage;
-import com.twu.inputOutput.ConsoleWriter;
+import com.twu.inputOutput.OutputWriter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,23 +10,22 @@ import java.util.List;
  */
 public class ListAvailableBooks implements MenuItem {
 
+    private OutputWriter outputWriter;
     private List<Book> bookList;
 
-    public ListAvailableBooks() {
+    public ListAvailableBooks(OutputWriter outputWriter) {
+        this.outputWriter=outputWriter;
         BookStorage bookStorage=new BookStorage();
         bookList=bookStorage.getBookList();
     }
 
 
-    public void display(ConsoleWriter consoleWriter) {
+    public void showContent() {
         for(Book book:bookList)
-            consoleWriter.write(book.toString());
+            outputWriter.write(book.toString());
     }
 
-    public boolean equals(Object obj) {
-        ListAvailableBooks listAvailableBooks=(ListAvailableBooks) obj;
-        if(!(listAvailableBooks instanceof ListAvailableBooks))
-            return false;
-        return(bookList.equals(listAvailableBooks.bookList));
+    public String getMenuName() {
+        return "ListAvailableBooks";
     }
 }
