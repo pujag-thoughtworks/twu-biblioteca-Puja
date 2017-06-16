@@ -10,22 +10,19 @@ import java.io.OutputStreamWriter;
 
 public class BibliotecaApp {
 
-
     public static void main(String[] args) {
+
         ConsoleOutputWriter consoleOutputWriter = getConsoleWriter();
         ConsoleInputReader consoleInputReader = getConsoleReader();
-        AppStarter appStarter = new AppStarter(consoleInputReader,
-                consoleOutputWriter);
-        appStarter.start();
+        LibrarySystem librarySystem = new LibrarySystem(consoleInputReader, consoleOutputWriter);
+        librarySystem.start();
     }
 
     private static ConsoleInputReader getConsoleReader() {
-        return new ConsoleInputReader(new BufferedReader(new InputStreamReader
-                (System.in)));
+        return new ConsoleInputReader(new BufferedReader(new InputStreamReader(System.in)));
     }
 
     private static ConsoleOutputWriter getConsoleWriter() {
-        return new ConsoleOutputWriter(
-                new BufferedWriter(new OutputStreamWriter(System.out)));
+        return new ConsoleOutputWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
     }
 }

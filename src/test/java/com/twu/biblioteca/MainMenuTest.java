@@ -18,49 +18,49 @@ public class MainMenuTest {
     @Test
     public void shouldBeAbleToAddMenuItemsToList() {
 
-        TestOutputWriter testOutputWriter=new TestOutputWriter();
-        TestInputReader testInputReader=new TestInputReader("");
-        MainMenu mainMenu=new MainMenu(testInputReader,testOutputWriter);
-        ListAvailableBooks listAvailableBooks=new ListAvailableBooks(testOutputWriter);
-        mainMenu.addMenuItems(listAvailableBooks);
-        List<MenuItem> expectedMenu=new ArrayList<>();
-        expectedMenu.add(listAvailableBooks);
+        TestOutputWriter testOutputWriter = new TestOutputWriter();
+        TestInputReader testInputReader = new TestInputReader("");
+        MainMenu mainMenu = new MainMenu(testInputReader, testOutputWriter);
+        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(testOutputWriter);
+        mainMenu.addMenuItems(listBooksMenuItem);
+        List<MenuItem> expectedMenu = new ArrayList<>();
+        expectedMenu.add(listBooksMenuItem);
 
-        List<MenuItem> actualMenu=mainMenu.getMenuItems();
+        List<MenuItem> actualMenu = mainMenu.getMenuItems();
 
-        assertEquals(expectedMenu,actualMenu);
+        assertEquals(expectedMenu, actualMenu);
     }
 
     @Test
     public void shouldDisplayMenuOptions() {
         TestOutputWriter outputWriter = new TestOutputWriter();
-        TestInputReader inputReader=new TestInputReader("");
-        MainMenu mainMenu=new MainMenu(inputReader,outputWriter);
-        mainMenu.addMenuItems(new ListAvailableBooks(outputWriter));
-        ArrayList<String> expectedOutput= new ArrayList<>();
+        TestInputReader inputReader = new TestInputReader("");
+        MainMenu mainMenu = new MainMenu(inputReader, outputWriter);
+        mainMenu.addMenuItems(new ListBooksMenuItem(outputWriter));
+        ArrayList<String> expectedOutput = new ArrayList<>();
         expectedOutput.add(MainMenu.DISPLAY_MESSAGE);
-        expectedOutput.add("1) ListAvailableBooks");
+        expectedOutput.add("1) List Available Books");
 
         mainMenu.display();
 
-        assertEquals(expectedOutput,outputWriter.getOutput());
+        assertEquals(expectedOutput, outputWriter.getOutput());
     }
 
     @Test
     public void shouldLoadAMenuItemBasedOnSelection() {
 
         TestOutputWriter outputWriter = new TestOutputWriter();
-        TestInputReader inputReader=new TestInputReader("1");
+        TestInputReader inputReader = new TestInputReader("1");
         TestOutputWriter testOutputWriter = new TestOutputWriter();
-        MainMenu mainMenu=new MainMenu(inputReader,outputWriter);
-        ListAvailableBooks listAvailableBooks=new ListAvailableBooks(outputWriter);
-        mainMenu.addMenuItems(listAvailableBooks);
-        ListAvailableBooks expectedListAvailableBook=new ListAvailableBooks(testOutputWriter);
+        MainMenu mainMenu = new MainMenu(inputReader, outputWriter);
+        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(outputWriter);
+        mainMenu.addMenuItems(listBooksMenuItem);
+        ListBooksMenuItem expectedListAvailableBook = new ListBooksMenuItem(testOutputWriter);
 
-        expectedListAvailableBook.showContent();
-        mainMenu.loadSelectedMenu();
+        expectedListAvailableBook.performAction();
+        mainMenu.performSelectedAction();
 
-        assertEquals(testOutputWriter.getOutput(),outputWriter.getOutput());
+        assertEquals(testOutputWriter.getOutput(), outputWriter.getOutput());
 
     }
 

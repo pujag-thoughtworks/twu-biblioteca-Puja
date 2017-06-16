@@ -15,13 +15,13 @@ public class ConsoleOutputWriterTest {
 
     @Test
     public void shouldWriteGivenInput() {
-        StringWriter stringWriter=new StringWriter();
-        ConsoleOutputWriter consoleOutputWriter =new ConsoleOutputWriter(new BufferedWriter
+        StringWriter stringWriter = new StringWriter();
+        ConsoleOutputWriter consoleOutputWriter = new ConsoleOutputWriter(new BufferedWriter
                 (stringWriter));
 
         consoleOutputWriter.write("Hello world");
 
-        assertEquals("Hello world\n",stringWriter.toString());
+        assertEquals("Hello world\n", stringWriter.toString());
 
     }
 

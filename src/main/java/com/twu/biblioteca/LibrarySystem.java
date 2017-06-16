@@ -6,27 +6,25 @@ import com.twu.inputOutput.OutputWriter;
 /**
  * Creates all necessary objects and calls required methods
  */
-public class AppStarter {
+public class LibrarySystem {
 
     private OutputWriter outputWriter;
     private InputReader inputReader;
-    public static final String WELCOME_MESSAGE = "Welcome to Biblioteca";
+    public static final String WELCOME_MESSAGE = "WELCOME TO BIBLIOTECA \n";
 
-    AppStarter(InputReader inputReader,OutputWriter outputWriter) {
+    LibrarySystem(InputReader inputReader, OutputWriter outputWriter) {
         this.outputWriter = outputWriter;
         this.inputReader = inputReader;
     }
 
     public void start() {
-
         outputWriter.write(WELCOME_MESSAGE);
-
-        MainMenu menu = new MainMenu(inputReader,outputWriter);
-        ListAvailableBooks listAvailableBooks = new ListAvailableBooks(outputWriter);
-        menu.addMenuItems(listAvailableBooks);
+        MainMenu menu = new MainMenu(inputReader, outputWriter);
+        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(outputWriter);
+        menu.addMenuItems(listBooksMenuItem);
         menu.display();
-        menu.loadSelectedMenu();
-
+        menu.performSelectedAction();
 
     }
+
 }

@@ -7,6 +7,7 @@ import java.util.*;
 
 /**
  * Menu that appears on start up.
+ * It lists the available options and users have to input their respective choice
  */
 public class MainMenu {
 
@@ -14,12 +15,12 @@ public class MainMenu {
     OutputWriter outputWriter;
     InputReader inputReader;
 
-    public static final String DISPLAY_MESSAGE = "MENU:\n For Selecting any " +
+    public static final String DISPLAY_MESSAGE = "MENU:\nFor selecting any " +
             "option enter the menuIndex corresponding to it\n";
 
-    MainMenu(InputReader inputReader,OutputWriter outputWriter) {
+    MainMenu(InputReader inputReader, OutputWriter outputWriter) {
         this.outputWriter = outputWriter;
-        this.inputReader=inputReader;
+        this.inputReader = inputReader;
         menuMapper = new HashMap<>();
 
     }
@@ -43,10 +44,10 @@ public class MainMenu {
         return menuList;
     }
 
-
-    public void loadSelectedMenu() {
+    public void performSelectedAction() {
         int menuOptionNo = Integer.parseInt(inputReader.read());
         MenuItem selectedMenu = menuMapper.get(menuOptionNo);
-        selectedMenu.showContent();
+        selectedMenu.performAction();
     }
+
 }

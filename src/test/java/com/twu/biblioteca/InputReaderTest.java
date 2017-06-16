@@ -15,8 +15,8 @@ public class InputReaderTest {
 
     @Test
     public void shouldReadInput() {
-        String str="Hello";
-        ConsoleInputReader inputReader=new ConsoleInputReader(new BufferedReader(new
+        String str = "Hello";
+        ConsoleInputReader inputReader = new ConsoleInputReader(new BufferedReader(new
                 StringReader(str)));
         String inputRead = inputReader.read();
         assertEquals(str, inputRead);

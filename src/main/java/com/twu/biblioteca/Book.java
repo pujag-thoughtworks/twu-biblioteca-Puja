@@ -9,9 +9,9 @@ public class Book {
     int publishingYear;
 
     public Book(String name, String author, int publishingYear) {
-        this.name=name;
-        this.author=author;
-        this.publishingYear=publishingYear;
+        this.name = name;
+        this.author = author;
+        this.publishingYear = publishingYear;
     }
 
     public String getName() {
@@ -25,8 +25,9 @@ public class Book {
     public int getPublishingYear() {
         return publishingYear;
     }
+
     public String toString() {
-        String bookRepresentation= name + " " +author+ " "+ publishingYear;
-        return  bookRepresentation;
+        String bookRepresentation = name + " " + author + " " + publishingYear;
+        return bookRepresentation;
     }
 }

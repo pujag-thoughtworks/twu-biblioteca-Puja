@@ -8,24 +8,24 @@ import java.util.List;
 /**
  * List the available books with the necessary details
  */
-public class ListAvailableBooks implements MenuItem {
+public class ListBooksMenuItem implements MenuItem {
 
     private OutputWriter outputWriter;
     private List<Book> bookList;
 
-    public ListAvailableBooks(OutputWriter outputWriter) {
-        this.outputWriter=outputWriter;
-        BookStorage bookStorage=new BookStorage();
-        bookList=bookStorage.getBookList();
+    public ListBooksMenuItem(OutputWriter outputWriter) {
+        this.outputWriter = outputWriter;
+        BookStorage bookStorage = new BookStorage();
+        bookList = bookStorage.getBookList();
     }
 
 
-    public void showContent() {
-        for(Book book:bookList)
+    public void performAction() {
+        for (Book book : bookList)
             outputWriter.write(book.toString());
     }
 
     public String getMenuName() {
-        return "ListAvailableBooks";
+        return "List Available Books";
     }
 }

@@ -15,7 +15,7 @@ public class TestOutputWriter implements OutputWriter {
     ArrayList<String> output;
 
     public TestOutputWriter() {
-        output=new ArrayList<>();
+        output = new ArrayList<>();
     }
 
     @Override

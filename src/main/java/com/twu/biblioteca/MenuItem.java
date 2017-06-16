@@ -6,6 +6,9 @@ import com.twu.inputOutput.ConsoleOutputWriter;
  * Interface for the various menus.
  */
 public interface MenuItem {
-    public void showContent();
+
+    public void performAction();
+
     public String getMenuName();
+
 }

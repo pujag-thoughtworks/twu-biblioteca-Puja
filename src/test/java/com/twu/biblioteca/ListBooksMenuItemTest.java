@@ -10,22 +10,22 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
- * Tests functionalities of ListAvailableBooks
+ * Tests functionalities of ListBooksMenuItem
  */
-public class ListAvailableBooksTest {
+public class ListBooksMenuItemTest {
 
 
     @Test
     public void shouldWriteAllBooksFromList() {
 
-        BookStorage bookStorage=new BookStorage();
+        BookStorage bookStorage = new BookStorage();
         TestOutputWriter consoleWriter = new TestOutputWriter();
-        ListAvailableBooks listAvailableBooks = new ListAvailableBooks(consoleWriter);
+        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(consoleWriter);
         List<String> expectedOutput = new ArrayList<>();
-        for(Book book:bookStorage.getBookList())
-             expectedOutput.add(book.toString());
+        for (Book book : bookStorage.getBookList())
+            expectedOutput.add(book.toString());
 
-        listAvailableBooks.showContent();
+        listBooksMenuItem.performAction();
 
         assertEquals(expectedOutput, consoleWriter.getOutput());
     }
@@ -34,11 +34,11 @@ public class ListAvailableBooksTest {
     public void shouldGetMenuItemsName() {
 
         TestOutputWriter consoleWriter = new TestOutputWriter();
-        ListAvailableBooks listAvailableBooks=new ListAvailableBooks(consoleWriter);
+        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(consoleWriter);
 
-        String menuName=listAvailableBooks.getMenuName();
+        String menuName = listBooksMenuItem.getMenuName();
 
-        assertEquals("ListAvailableBooks",menuName);
+        assertEquals("List Available Books", menuName);
 
     }
 
