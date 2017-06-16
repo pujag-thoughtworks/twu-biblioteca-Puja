@@ -31,9 +31,9 @@ public class BookTest {
     }
 
     @Test
-    public void shouldBeRepresentedAsString() {
+    public void stringRepresentationShouldBeInRequiredFormat() {
         Book book = new Book("Harry Potter", "J.K Rowling", 2000);
-        String expectedOutput = "Harry Potter" + " " + "J.K Rowling" + " " + 2000;
+        String expectedOutput = String.format("%-30s%-30s%-15s", "Harry Potter", "J.K Rowling", 2000);
         assertEquals(expectedOutput, book.toString());
     }
 

@@ -27,7 +27,7 @@ public class Book {
     }
 
     public String toString() {
-        String bookRepresentation = name + " " + author + " " + publishingYear;
+        String bookRepresentation = String.format("%-30s%-30s%-15s",name,author,publishingYear);
         return bookRepresentation;
     }
 }
