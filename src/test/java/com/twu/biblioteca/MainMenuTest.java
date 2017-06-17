@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.mockModels.ExpectedOutput;
 import com.twu.mockModels.TestMainMenu;
 import com.twu.mockModels.TestOutputWriter;
 import com.twu.mockModels.TestInputReader;
@@ -50,41 +51,35 @@ public class MainMenuTest {
 
     @Test
     public void shouldLoadAMenuItemBasedOnSelection() {
-        TestOutputWriter testOutputWriterForExpectedOutput = new TestOutputWriter();
-        ListBooksMenuItem expectedListAvailableBook = new ListBooksMenuItem(testOutputWriterForExpectedOutput);
         TestOutputWriter outputWriter = new TestOutputWriter();
         TestInputReader inputReader = new TestInputReader("1");
         MainMenu mainMenu = new MainMenu(inputReader, outputWriter);
         ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(outputWriter);
         mainMenu.addMenuItems(listBooksMenuItem);
+        ExpectedOutput expectedOutput = new ExpectedOutput();
 
-        expectedListAvailableBook.performAction();
         mainMenu.performSelectedAction();
 
-        assertEquals(testOutputWriterForExpectedOutput.getOutput(), outputWriter.getOutput());
+        assertEquals(expectedOutput.getOutputForLisBooksMenuItems(), outputWriter.getOutput());
 
     }
 
     @Test
     public void shouldAskForInputUnlessValidInputIsPassed() {
-
-        TestInputReader inputReader=new TestInputReader("3\n2\n1");
+        TestInputReader inputReader = new TestInputReader("3\n2\n1");
         TestOutputWriter outputWriter = new TestOutputWriter();
-        TestOutputWriter outputWriterForTest=new TestOutputWriter();
         MainMenu mainMenu = new MainMenu(inputReader, outputWriter);
         ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(outputWriter);
-        ListBooksMenuItem listBooksMenuItemForTest=new ListBooksMenuItem(outputWriterForTest);
         mainMenu.addMenuItems(listBooksMenuItem);
-        List<String> expectedOutput=new ArrayList<>();
+        List<String> expectedOutput = new ArrayList<>();
         expectedOutput.add(MainMenu.OPTION_INVALID_MESSAGE);
         expectedOutput.add(MainMenu.OPTION_INVALID_MESSAGE);
-        listBooksMenuItemForTest.performAction();
-        expectedOutput.addAll(outputWriterForTest.getOutput());
+        expectedOutput.addAll(new ExpectedOutput().getOutputForLisBooksMenuItems());
 
         mainMenu.performSelectedAction();
 
-        assertEquals(3,inputReader.getNoOfReads());
-        assertEquals(expectedOutput,outputWriter.getOutput());
+        assertEquals(3, inputReader.getNoOfReads());
+        assertEquals(expectedOutput, outputWriter.getOutput());
 
     }
 

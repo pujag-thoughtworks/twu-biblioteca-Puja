@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.mockModels.ExpectedOutput;
 import com.twu.mockModels.TestInputReader;
 import com.twu.mockModels.TestOutputWriter;
 import org.junit.Test;
@@ -10,7 +11,7 @@ import java.util.List;
 import static junit.framework.TestCase.*;
 
 /**
- * Created by pujag on 6/15/17.
+ * this classes tests whether the different methods are called in sequence.
  */
 public class LibrarySystemTest {
 
@@ -26,24 +27,17 @@ public class LibrarySystemTest {
         assertEquals(librarySystem.WELCOME_MESSAGE, output.get(0));
     }
 
-    // TODO: Rename second test case with each feature addition
-
     @Test
-    public void shouldDisplayMenuAfterGreetingUser() {
-        TestInputReader inputReaderToGenerateExpectedOutput = new TestInputReader("1");
-        TestOutputWriter outputWriterToGenerateExpectedOutput = new TestOutputWriter();
-        MainMenu mainMenuToGenerateExpectedOutput = new MainMenu(inputReaderToGenerateExpectedOutput,
-                outputWriterToGenerateExpectedOutput);
-        mainMenuToGenerateExpectedOutput.addMenuItems(new ListBooksMenuItem(outputWriterToGenerateExpectedOutput));
-        mainMenuToGenerateExpectedOutput.display();
-        mainMenuToGenerateExpectedOutput.performSelectedAction();
+    public void sequenceOfOutputShouldBeValid() {
+
         ArrayList<String> expectedOutput = new ArrayList<>();
         expectedOutput.add(LibrarySystem.WELCOME_MESSAGE);
-        expectedOutput.addAll(outputWriterToGenerateExpectedOutput.getOutput());
-
         TestInputReader inputReader = new TestInputReader("1");
         TestOutputWriter outputWriter = new TestOutputWriter();
         LibrarySystem librarySystem = new LibrarySystem(inputReader, outputWriter);
+        ExpectedOutput preKnownOutput = new ExpectedOutput();
+        expectedOutput.addAll(preKnownOutput.getOutputForMainMenuDispaly());
+        expectedOutput.addAll(preKnownOutput.getOutputForLisBooksMenuItems());
 
         librarySystem.start();
 
