@@ -9,52 +9,62 @@ import java.util.*;
  * Menu that appears on start up.
  * It lists the available options and users have to input their respective choice
  */
+
 public class MainMenu {
 
-    private Map<String, MenuItem> menuMapper;
-    OutputWriter outputWriter;
-    InputReader inputReader;
+    public static final String DISPLAY_MESSAGE = "MENU:\n";
+    public static final String MESSAGE_TO_REQUEST_INPUT = "\nPlease enter your choice: ";
 
-    public static final String DISPLAY_MESSAGE = "MENU:\nFor selecting any " +
-            "option enter the menuIndex corresponding to it\n";
-    public static final String OPTION_INVALID_MESSAGE = "Select a valid option!\n";
+    private OutputWriter outputWriter;
+    private InputReader inputReader;
+    ListBooksMenuItem listBooksMenuItem;
+    QuitMenuItem quitMenuItem;
 
-    public MainMenu(InputReader inputReader, OutputWriter outputWriter) {
+    private Map<Integer, MenuItem> menuMapper;
+
+    public MainMenu(InputReader inputReader, OutputWriter outputWriter, ListBooksMenuItem listBooksMenuItem) {
         this.outputWriter = outputWriter;
         this.inputReader = inputReader;
+        this.listBooksMenuItem = listBooksMenuItem;
+        quitMenuItem = new QuitMenuItem(outputWriter);
         menuMapper = new HashMap<>();
+        menuMapper.put(1, listBooksMenuItem);
+        menuMapper.put(2, quitMenuItem);
 
-    }
-
-    public void addMenuItems(MenuItem menuItem) {
-        int index = menuMapper.size();
-        menuMapper.put(index + 1 + "", menuItem);
     }
 
     public void displayMenu() {
         outputWriter.write(DISPLAY_MESSAGE);
-        for (String keyIndex : menuMapper.keySet()) {
-            String option = keyIndex + ") " + menuMapper.get(keyIndex)
-                    .getMenuName();
+        for (Map.Entry<Integer, MenuItem> mapEntry : menuMapper.entrySet()) {
+            String option = mapEntry.getKey() + ") " + mapEntry.getValue().getMenuName();
             outputWriter.write(option);
         }
+        outputWriter.write(MESSAGE_TO_REQUEST_INPUT);
     }
-
 
     public void performSelectedAction() {
         MenuItem selectedMenu;
         String menuName;
+
         do {
-            String userInput = inputReader.read();
-            selectedMenu = menuMapper.getOrDefault(userInput, new InvalidMenuOption());
+            int userInput = readUserInput();
+            selectedMenu = menuMapper.getOrDefault(userInput, new InvalidMenuItem(outputWriter));
             menuName = selectedMenu.getMenuName();
-            if (menuName == null) {
-                outputWriter.write(OPTION_INVALID_MESSAGE);
-                continue;
-            }
             selectedMenu.performAction();
+            if (menuName != null && !menuName.equals(QuitMenuItem.MENU_NAME))
+                displayMenu();
         } while (menuName == null || !menuName.equals(QuitMenuItem.MENU_NAME));
 
+    }
+
+    private int readUserInput() {
+        int userInput;
+        try {
+            userInput = Integer.parseInt(inputReader.read());
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+        return userInput;
     }
 
 }

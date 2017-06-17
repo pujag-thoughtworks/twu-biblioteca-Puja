@@ -8,25 +8,24 @@ import com.twu.inputOutput.OutputWriter;
  */
 public class LibrarySystem {
 
-    private OutputWriter outputWriter;
-    private InputReader inputReader;
-    public static final String WELCOME_MESSAGE = "WELCOME TO BIBLIOTECA \n";
+    public static final String WELCOME_MESSAGE="WELCOME TO BIBLIOTECA";
+
+    InputReader inputReader;
+    OutputWriter outputWriter;
+    ListBooksMenuItem listBooksMenuItem;
+    MainMenu mainMenu;
 
     LibrarySystem(InputReader inputReader, OutputWriter outputWriter) {
-        this.outputWriter = outputWriter;
         this.inputReader = inputReader;
+        this.outputWriter = outputWriter;
+        listBooksMenuItem = new ListBooksMenuItem(outputWriter);
+        mainMenu = new MainMenu(inputReader, outputWriter, listBooksMenuItem);
     }
 
     public void start() {
         outputWriter.write(WELCOME_MESSAGE);
-        MainMenu menu = new MainMenu(inputReader, outputWriter);
-        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(outputWriter);
-        QuitMenuItem quitMenuItem=new QuitMenuItem(outputWriter);
-        menu.addMenuItems(listBooksMenuItem);
-        menu.addMenuItems(quitMenuItem);
-        menu.displayMenu();
-        menu.performSelectedAction();
+        mainMenu.displayMenu();
+        mainMenu.performSelectedAction();
 
     }
-
 }

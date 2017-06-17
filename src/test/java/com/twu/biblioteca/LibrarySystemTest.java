@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import com.twu.mockModels.ExpectedOutput;
 import com.twu.mockModels.TestInputReader;
 import com.twu.mockModels.TestOutputWriter;
 import org.junit.Test;
@@ -24,28 +23,29 @@ public class LibrarySystemTest {
         List<String> output = outputWriter.getOutput();
 
         librarySystem.start();
+
         assertEquals(librarySystem.WELCOME_MESSAGE, output.get(0));
     }
 
     @Test
     public void sequenceOfOutputShouldBeValid() {
 
-        ArrayList<String> expectedOutput = new ArrayList<>();
-        expectedOutput.add(LibrarySystem.WELCOME_MESSAGE);
         TestInputReader inputReader = new TestInputReader("1\n2");
         TestOutputWriter outputWriter = new TestOutputWriter();
         LibrarySystem librarySystem = new LibrarySystem(inputReader, outputWriter);
-        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(outputWriter);
-        QuitMenuItem quitMenuItem = new QuitMenuItem(outputWriter);
-        String[] addedMenuNames = {listBooksMenuItem.getMenuName(), quitMenuItem.getMenuName()};
-        ExpectedOutput preKnownOutput = new ExpectedOutput();
-        expectedOutput.addAll(preKnownOutput.getOutputForMainMenuDispaly(addedMenuNames));
-        expectedOutput.addAll(preKnownOutput.getOutputForListBooksMenuItems());
-        expectedOutput.add(quitMenuItem.QUIT_MESSAGE);
+
+        TestOutputWriter testOutputWriter = new TestOutputWriter();
+        MainMenu mainMenu = new MainMenu(new TestInputReader("1\n2"), testOutputWriter, new ListBooksMenuItem(testOutputWriter));
+        List<String> expectedOutput = new ArrayList<>();
+        expectedOutput.add(LibrarySystem.WELCOME_MESSAGE);
 
         librarySystem.start();
+        mainMenu.displayMenu();
+        mainMenu.performSelectedAction();
 
+        expectedOutput.addAll(testOutputWriter.getOutput());
         assertEquals(expectedOutput, outputWriter.getOutput());
+
     }
 
 }
