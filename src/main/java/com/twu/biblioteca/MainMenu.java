@@ -17,7 +17,7 @@ public class MainMenu {
 
     public static final String DISPLAY_MESSAGE = "MENU:\nFor selecting any " +
             "option enter the menuIndex corresponding to it\n";
-    public static final String OPTION_INVALID_MESSAGE="Select a valid option!";
+    public static final String OPTION_INVALID_MESSAGE = "Select a valid option!\n";
 
     public MainMenu(InputReader inputReader, OutputWriter outputWriter) {
         this.outputWriter = outputWriter;
@@ -28,10 +28,10 @@ public class MainMenu {
 
     public void addMenuItems(MenuItem menuItem) {
         int index = menuMapper.size();
-        menuMapper.put(index + 1 +"", menuItem);
+        menuMapper.put(index + 1 + "", menuItem);
     }
 
-    public void display() {
+    public void displayMenu() {
         outputWriter.write(DISPLAY_MESSAGE);
         for (String keyIndex : menuMapper.keySet()) {
             String option = keyIndex + ") " + menuMapper.get(keyIndex)
@@ -43,13 +43,18 @@ public class MainMenu {
 
     public void performSelectedAction() {
         MenuItem selectedMenu;
+        String menuName;
         do {
             String userInput = inputReader.read();
             selectedMenu = menuMapper.getOrDefault(userInput, new InvalidMenuOption());
-            if (selectedMenu.getMenuName() == null)
+            menuName = selectedMenu.getMenuName();
+            if (menuName == null) {
                 outputWriter.write(OPTION_INVALID_MESSAGE);
-        } while (selectedMenu.getMenuName()==null);
-        selectedMenu.performAction();
+                continue;
+            }
+            selectedMenu.performAction();
+        } while (menuName == null || !menuName.equals(QuitMenuItem.MENU_NAME));
+
     }
 
 }

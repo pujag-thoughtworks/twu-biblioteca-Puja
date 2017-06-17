@@ -21,8 +21,10 @@ public class LibrarySystem {
         outputWriter.write(WELCOME_MESSAGE);
         MainMenu menu = new MainMenu(inputReader, outputWriter);
         ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(outputWriter);
+        QuitMenuItem quitMenuItem=new QuitMenuItem(outputWriter);
         menu.addMenuItems(listBooksMenuItem);
-        menu.display();
+        menu.addMenuItems(quitMenuItem);
+        menu.displayMenu();
         menu.performSelectedAction();
 
     }
