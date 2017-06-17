@@ -10,6 +10,7 @@ import java.util.List;
  */
 public class ListBooksMenuItem implements MenuItem {
 
+    private final String MENU_NAME="List available books";
     private OutputWriter outputWriter;
     private List<Book> bookList;
 
@@ -26,6 +27,6 @@ public class ListBooksMenuItem implements MenuItem {
     }
 
     public String getMenuName() {
-        return "List Available Books";
+        return MENU_NAME;
     }
 }

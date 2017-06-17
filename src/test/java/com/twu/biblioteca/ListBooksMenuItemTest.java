@@ -38,7 +38,7 @@ public class ListBooksMenuItemTest {
 
         String menuName = listBooksMenuItem.getMenuName();
 
-        assertEquals("List Available Books", menuName);
+        assertEquals("List available books", menuName);
 
     }
 

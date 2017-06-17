@@ -39,10 +39,11 @@ public class MainMenuTest {
         TestOutputWriter outputWriter = new TestOutputWriter();
         TestInputReader inputReader = new TestInputReader("");
         MainMenu mainMenu = new MainMenu(inputReader, outputWriter);
-        mainMenu.addMenuItems(new ListBooksMenuItem(outputWriter));
+        ListBooksMenuItem listBooksMenuItem=new ListBooksMenuItem(outputWriter);
+        mainMenu.addMenuItems(listBooksMenuItem);
         ArrayList<String> expectedOutput = new ArrayList<>();
         expectedOutput.add(MainMenu.DISPLAY_MESSAGE);
-        expectedOutput.add("1) List Available Books");
+        expectedOutput.add("1) " +listBooksMenuItem.getMenuName());
 
         mainMenu.display();
 
