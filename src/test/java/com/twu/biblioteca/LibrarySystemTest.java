@@ -30,18 +30,20 @@ public class LibrarySystemTest {
 
     @Test
     public void shouldDisplayMenuAfterGreetingUser() {
+        TestInputReader inputReaderToGenerateExpectedOutput = new TestInputReader("1");
+        TestOutputWriter outputWriterToGenerateExpectedOutput = new TestOutputWriter();
+        MainMenu mainMenuToGenerateExpectedOutput = new MainMenu(inputReaderToGenerateExpectedOutput,
+                outputWriterToGenerateExpectedOutput);
+        mainMenuToGenerateExpectedOutput.addMenuItems(new ListBooksMenuItem(outputWriterToGenerateExpectedOutput));
+        mainMenuToGenerateExpectedOutput.display();
+        mainMenuToGenerateExpectedOutput.performSelectedAction();
+        ArrayList<String> expectedOutput = new ArrayList<>();
+        expectedOutput.add(LibrarySystem.WELCOME_MESSAGE);
+        expectedOutput.addAll(outputWriterToGenerateExpectedOutput.getOutput());
 
         TestInputReader inputReader = new TestInputReader("1");
         TestOutputWriter outputWriter = new TestOutputWriter();
-        TestOutputWriter testOutputWriter = new TestOutputWriter();
         LibrarySystem librarySystem = new LibrarySystem(inputReader, outputWriter);
-        MainMenu mainMenu = new MainMenu(inputReader, testOutputWriter);
-        mainMenu.addMenuItems(new ListBooksMenuItem(testOutputWriter));
-        mainMenu.display();
-        mainMenu.performSelectedAction();
-        ArrayList<String> expectedOutput = new ArrayList<>();
-        expectedOutput.add(librarySystem.WELCOME_MESSAGE);
-        expectedOutput.addAll(testOutputWriter.getOutput());
 
         librarySystem.start();
 

@@ -7,15 +7,22 @@ import com.twu.inputOutput.InputReader;
  */
 public class TestInputReader implements InputReader {
 
-    String inputString;
+    String[] input;
+    int noOfReads=0;
 
     public TestInputReader(String inputString) {
-        this.inputString = inputString;
+        input=inputString.split("\n");
+
     }
 
     @Override
     public String read() {
-        return inputString;
+        String givenInput= input[noOfReads];
+        noOfReads++;
+        return givenInput;
     }
 
+    public int getNoOfReads() {
+        return noOfReads;
+    }
 }
