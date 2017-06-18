@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by pujag on 6/18/17.
+ * Mock class to store outputs
+ * Created to facilitate testing
+ * Reduces the need of creating same output repeatedly
  */
 public class ExpectedOutput {
 
@@ -24,6 +26,7 @@ public class ExpectedOutput {
 
     public List<String> getListBooksOutput() {
         List<String> output = new ArrayList<>();
+        output.add(ListBooksMenuItem.MENU_DESCRIPTION_MESSAGE);
         BookStorage bookStorage = new BookStorage();
         for (Book book : bookStorage.getBookList())
             output.add(book.toString());

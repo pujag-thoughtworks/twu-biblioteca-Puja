@@ -19,15 +19,17 @@ public class ListBooksMenuItemTest {
     public void shouldWriteAllBooksFromList() {
 
         BookStorage bookStorage = new BookStorage();
-        TestOutputWriter consoleWriter = new TestOutputWriter();
-        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(consoleWriter,new Librarian());
+        TestOutputWriter outputWriter = new TestOutputWriter();
+        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(outputWriter,new Librarian());
+
         List<String> expectedOutput = new ArrayList<>();
+        expectedOutput.add(ListBooksMenuItem.MENU_DESCRIPTION_MESSAGE);
         for (Book book : bookStorage.getBookList())
             expectedOutput.add(book.toString());
 
         listBooksMenuItem.performAction();
 
-        assertEquals(expectedOutput, consoleWriter.getOutput());
+        assertEquals(expectedOutput, outputWriter.getOutput());
     }
 
     @Test
@@ -38,7 +40,7 @@ public class ListBooksMenuItemTest {
 
         String menuName = listBooksMenuItem.getMenuName();
 
-        assertEquals("List available books\n", menuName);
+        assertEquals("List available books", menuName);
 
     }
 

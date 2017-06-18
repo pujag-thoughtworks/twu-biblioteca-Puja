@@ -23,6 +23,7 @@ public class ListBooksMenuItem implements MenuItem {
     }
 
     public void performAction() {
+        outputWriter.write(MENU_DESCRIPTION_MESSAGE);
         for (Book book : bookList)
             outputWriter.write(book.toString());
     }
