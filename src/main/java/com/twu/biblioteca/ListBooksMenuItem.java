@@ -10,7 +10,8 @@ import java.util.List;
  */
 public class ListBooksMenuItem implements MenuItem {
 
-    private final String MENU_NAME="List available books\n";
+    public static final String MENU_NAME="List available books";
+    public static final String MENU_DESCRIPTION_MESSAGE="Available books are:";
     Librarian librarian;
     private OutputWriter outputWriter;
     private List<Book> bookList;

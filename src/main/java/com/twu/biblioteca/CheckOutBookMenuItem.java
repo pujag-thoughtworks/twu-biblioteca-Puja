@@ -11,7 +11,7 @@ public class CheckOutBookMenuItem implements MenuItem {
     static final String MESSAGE_TO_REQUEST_CHECKOUT = "Please enter the name of book you want to check out : ";
     static final String UNSUCCESSFUL_CHECKOUT_MESSAGE = "That book is not available";
     static final String SUCCESSFUL_CHECKOUT_MESSAGE = "Thank you! Enjoy the book :";
-    private static final String MENU_NAME = "Check out book\n";
+    public static final String MENU_NAME = "Check out book\n";
 
     private InputReader inputReader;
     private OutputWriter outputWriter;

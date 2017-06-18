@@ -13,23 +13,38 @@ import java.util.*;
 public class MainMenu {
 
     public static final String DISPLAY_MESSAGE = "MENU:\n";
-    public static final String MESSAGE_TO_REQUEST_INPUT = "\nPlease enter your choice: ";
+    public static final String MESSAGE_TO_REQUEST_INPUT = "Please enter your choice: ";
 
     private OutputWriter outputWriter;
     private InputReader inputReader;
+    Librarian librarian;
     ListBooksMenuItem listBooksMenuItem;
+    CheckOutBookMenuItem checkOutBookMenuItem;
+    ReturnBookMenuItem returnBookMenuItem;
     QuitMenuItem quitMenuItem;
+
 
     private Map<Integer, MenuItem> menuMapper;
 
-    public MainMenu(InputReader inputReader, OutputWriter outputWriter, ListBooksMenuItem listBooksMenuItem) {
+    public MainMenu(InputReader inputReader, OutputWriter outputWriter) {
         this.outputWriter = outputWriter;
         this.inputReader = inputReader;
-        this.listBooksMenuItem = listBooksMenuItem;
+        initializeFields(inputReader, outputWriter);
+
+    }
+
+    private void initializeFields(InputReader inputReader, OutputWriter outputWriter) {
+        librarian = new Librarian();
+        listBooksMenuItem = new ListBooksMenuItem(outputWriter, librarian);
+        checkOutBookMenuItem = new CheckOutBookMenuItem(inputReader, outputWriter, librarian);
+        returnBookMenuItem = new ReturnBookMenuItem(inputReader, outputWriter, librarian);
         quitMenuItem = new QuitMenuItem(outputWriter);
+
         menuMapper = new HashMap<>();
         menuMapper.put(1, listBooksMenuItem);
-        menuMapper.put(2, quitMenuItem);
+        menuMapper.put(2, checkOutBookMenuItem);
+        menuMapper.put(3, returnBookMenuItem);
+        menuMapper.put(4, quitMenuItem);
 
     }
 
