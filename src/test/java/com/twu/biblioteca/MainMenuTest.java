@@ -4,7 +4,6 @@ import com.twu.mockModels.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -19,7 +18,7 @@ public class MainMenuTest {
 
         TestOutputWriter outputWriter = new TestOutputWriter();
         TestInputReader inputReader = new TestInputReader("");
-        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(outputWriter);
+        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(outputWriter, new Librarian());
         MainMenu mainMenu = new MainMenu(inputReader, outputWriter, listBooksMenuItem);
 
         ArrayList<String> expectedOutput = new ArrayList<>();

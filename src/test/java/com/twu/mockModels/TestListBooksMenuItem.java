@@ -1,5 +1,6 @@
 package com.twu.mockModels;
 
+import com.twu.biblioteca.Librarian;
 import com.twu.biblioteca.ListBooksMenuItem;
 import com.twu.inputOutput.OutputWriter;
 
@@ -11,7 +12,7 @@ public class TestListBooksMenuItem extends ListBooksMenuItem {
     private int countOfPerformActionCalls;
 
     public TestListBooksMenuItem(OutputWriter outputWriter) {
-        super(outputWriter);
+        super(outputWriter, new Librarian());
     }
 
     public void performAction() {

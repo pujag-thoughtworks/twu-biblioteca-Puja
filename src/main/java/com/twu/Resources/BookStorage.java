@@ -32,6 +32,6 @@ public class BookStorage  {
     } */
 
     public List<Book> getBookList() {
-        return bookList;
+        return new ArrayList<Book>(bookList);
     }
 }

@@ -30,4 +30,11 @@ public class Book {
         String bookRepresentation = String.format("%-30s%-30s%-15s",name,author,publishingYear);
         return bookRepresentation;
     }
+
+    public boolean equals(Object object){
+       Book book=(Book) object;
+       if(!(book instanceof Book))
+           return false;
+       return (name.equals(book.name) && author.equals(book.author) && publishingYear==book.publishingYear);
+    }
 }

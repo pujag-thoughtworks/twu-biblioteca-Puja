@@ -18,7 +18,7 @@ public class LibrarySystem {
     LibrarySystem(InputReader inputReader, OutputWriter outputWriter) {
         this.inputReader = inputReader;
         this.outputWriter = outputWriter;
-        listBooksMenuItem = new ListBooksMenuItem(outputWriter);
+        listBooksMenuItem = new ListBooksMenuItem(outputWriter, new Librarian());
         mainMenu = new MainMenu(inputReader, outputWriter, listBooksMenuItem);
     }
 

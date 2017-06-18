@@ -20,7 +20,7 @@ public class ListBooksMenuItemTest {
 
         BookStorage bookStorage = new BookStorage();
         TestOutputWriter consoleWriter = new TestOutputWriter();
-        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(consoleWriter);
+        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(consoleWriter,new Librarian());
         List<String> expectedOutput = new ArrayList<>();
         for (Book book : bookStorage.getBookList())
             expectedOutput.add(book.toString());
@@ -34,7 +34,7 @@ public class ListBooksMenuItemTest {
     public void shouldGetMenuItemsName() {
 
         TestOutputWriter consoleWriter = new TestOutputWriter();
-        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(consoleWriter);
+        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(consoleWriter, new Librarian());
 
         String menuName = listBooksMenuItem.getMenuName();
 

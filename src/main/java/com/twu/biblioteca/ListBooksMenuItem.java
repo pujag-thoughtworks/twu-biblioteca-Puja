@@ -11,15 +11,15 @@ import java.util.List;
 public class ListBooksMenuItem implements MenuItem {
 
     private final String MENU_NAME="List available books\n";
+    Librarian librarian;
     private OutputWriter outputWriter;
     private List<Book> bookList;
 
-    public ListBooksMenuItem(OutputWriter outputWriter) {
+    public ListBooksMenuItem(OutputWriter outputWriter, Librarian librarian) {
         this.outputWriter = outputWriter;
-        BookStorage bookStorage = new BookStorage();
-        bookList = bookStorage.getBookList();
+        this.librarian=librarian;
+        bookList = librarian.getAvailableBooks();
     }
-
 
     public void performAction() {
         for (Book book : bookList)

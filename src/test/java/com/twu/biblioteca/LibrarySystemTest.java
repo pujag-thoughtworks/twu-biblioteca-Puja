@@ -35,7 +35,7 @@ public class LibrarySystemTest {
         LibrarySystem librarySystem = new LibrarySystem(inputReader, outputWriter);
 
         TestOutputWriter testOutputWriter = new TestOutputWriter();
-        MainMenu mainMenu = new MainMenu(new TestInputReader("1\n2"), testOutputWriter, new ListBooksMenuItem(testOutputWriter));
+        MainMenu mainMenu = new MainMenu(new TestInputReader("1\n2"), testOutputWriter, new ListBooksMenuItem(testOutputWriter, new Librarian()));
         List<String> expectedOutput = new ArrayList<>();
         expectedOutput.add(LibrarySystem.WELCOME_MESSAGE);
 
