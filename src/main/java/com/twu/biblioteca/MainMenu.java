@@ -12,8 +12,8 @@ import java.util.*;
 
 public class MainMenu {
 
-    public static final String DISPLAY_MESSAGE = "MENU:\n";
-    public static final String MESSAGE_TO_REQUEST_INPUT = "Please enter your choice: ";
+    public static final String DISPLAY_MESSAGE = "\nMENU:";
+    public static final String MESSAGE_TO_REQUEST_INPUT = "\nPlease enter your choice: ";
 
     private OutputWriter outputWriter;
     private InputReader inputReader;

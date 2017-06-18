@@ -8,7 +8,7 @@ import com.twu.inputOutput.OutputWriter;
  */
 public class LibrarySystem {
 
-    public static final String WELCOME_MESSAGE="WELCOME TO BIBLIOTECA\n";
+    public static final String WELCOME_MESSAGE="\nWELCOME TO BIBLIOTECA";
 
     InputReader inputReader;
     OutputWriter outputWriter;

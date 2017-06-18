@@ -1,10 +1,8 @@
 package com.twu.biblioteca;
 
 import com.twu.Resources.BookStorage;
-import com.twu.mockModels.TestOutputWriter;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -51,13 +49,8 @@ public class LibrarianTest {
     @Test
     public void shouldKnowIfABookBelongsToLibrary() {
         Librarian librarian = new Librarian();
-        BookStorage bookStorage = new BookStorage();
-
-        Book requestedBook = bookStorage.getBookList().get(1);
         Book randomBook = new Book("xxx", "yyy", 1988);
-
-        assertTrue(librarian.doesBookBelongToLibrary(requestedBook.getName()));
-        assertFalse(librarian.doesBookBelongToLibrary(randomBook.getName()));
+        assertFalse(librarian.doesBookBelongsToLibrary(randomBook.getName()));
     }
 
 }

@@ -27,7 +27,7 @@ public class ReturnBookMenuItem implements MenuItem {
     public void performAction() {
         outputWriter.write(MESSAGE_TO_REQUEST_RETURN);
         String bookName = inputReader.read();
-        if (!librarian.doesBookBelongToLibrary(bookName)) {
+        if (!librarian.doesBookBelongsToLibrary(bookName)) {
             outputWriter.write(UNSUCCESSFUL_RETURN_MESSAGE);
             return;
         }

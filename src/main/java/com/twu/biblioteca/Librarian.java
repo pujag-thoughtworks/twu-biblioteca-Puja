@@ -39,11 +39,14 @@ public class Librarian {
         return true;
     }
 
-    public boolean doesBookBelongToLibrary(String bookName) {
+    public boolean doesBookBelongsToLibrary(String bookName) {
         String formattedBookName = bookName.toLowerCase();
-        if(titleToBook.containsKey(formattedBookName))
-            return true;
-        return false;
+        if(!titleToBook.containsKey(formattedBookName))
+            return false;
+        Book bookToReturn=titleToBook.get(formattedBookName);
+        if(availableBooks.contains(bookToReturn))
+            return false;
+        return true;
     }
 
     public void checkoutBook(String bookTitle) {
