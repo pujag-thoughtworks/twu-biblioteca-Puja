@@ -10,13 +10,13 @@ import java.util.Map;
  * Class to handle internal details of library.
  * It maintains information about book availability and what are the books belonging to library.
  */
-public class Librarian {
+class Librarian {
 
     private BookStorage bookStorage;
     private Map<String, Book> titleToBook;
     private List<Book> availableBooks;
 
-    public Librarian() {
+    Librarian() {
         bookStorage = new BookStorage();
         initialize();
     }
@@ -30,38 +30,33 @@ public class Librarian {
         }
     }
 
-    public boolean isBookAvailableForCheckout(String bookName) {
+    boolean isBookAvailableForCheckout(String bookName) {
         String formattedBookName = bookName.toLowerCase();
         Book requestedBook = titleToBook.getOrDefault(formattedBookName, null);
 
-        if (requestedBook == null || !availableBooks.contains(requestedBook))
-            return false;
-        return true;
+        return !(requestedBook == null || !availableBooks.contains(requestedBook));
     }
 
-    public boolean doesBookBelongsToLibrary(String bookName) {
+    boolean doesBookBelongsToLibrary(String bookName) {
         String formattedBookName = bookName.toLowerCase();
-        if(!titleToBook.containsKey(formattedBookName))
+        if (!titleToBook.containsKey(formattedBookName))
             return false;
-        Book bookToReturn=titleToBook.get(formattedBookName);
-        if(availableBooks.contains(bookToReturn))
-            return false;
-        return true;
+        Book bookToReturn = titleToBook.get(formattedBookName);
+        return !availableBooks.contains(bookToReturn);
     }
 
-    public void checkoutBook(String bookTitle) {
+    void checkoutBook(String bookTitle) {
         Book requestedBook = titleToBook.get(bookTitle.toLowerCase());
         availableBooks.remove(requestedBook);
     }
 
-    public void returnBook(String bookTitle) {
-        Book bookToReturn=titleToBook.get(bookTitle.toLowerCase());
+    void returnBook(String bookTitle) {
+        Book bookToReturn = titleToBook.get(bookTitle.toLowerCase());
         availableBooks.add(bookToReturn);
     }
 
-    public List<Book> getAvailableBooks() {
+    List<Book> getAvailableBooks() {
         return availableBooks;
     }
-
 
 }

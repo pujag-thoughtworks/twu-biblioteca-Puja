@@ -20,7 +20,7 @@ public class MainMenuTest {
         TestOutputWriter outputWriter = new TestOutputWriter();
         TestInputReader inputReader = new TestInputReader("");
         MainMenu mainMenu = new MainMenu(inputReader, outputWriter);
-        ExpectedOutput expectedOutput=new ExpectedOutput();
+        ExpectedOutput expectedOutput = new ExpectedOutput();
 
         mainMenu.displayMenu();
 
@@ -36,7 +36,7 @@ public class MainMenuTest {
 
         mainMenu.performSelectedAction();
 
-        assertEquals(QuitMenuItem.QUIT_MESSAGE,outputWriter.getOutput().get(0));
+        assertEquals(QuitMenuItem.QUIT_MESSAGE, outputWriter.getOutput().get(0));
     }
 
     @Test
@@ -46,14 +46,14 @@ public class MainMenuTest {
         TestOutputWriter outputWriter = new TestOutputWriter();
         MainMenu mainMenu = new MainMenu(inputReader, outputWriter);
 
-        List<String> expectedOutput=new ArrayList<>();
+        List<String> expectedOutput = new ArrayList<>();
         expectedOutput.add(InvalidMenuItem.OPTION_INVALID_MESSAGE);
         expectedOutput.add(InvalidMenuItem.OPTION_INVALID_MESSAGE);
         expectedOutput.add(QuitMenuItem.QUIT_MESSAGE);
 
         mainMenu.performSelectedAction();
 
-        assertEquals(expectedOutput,outputWriter.getOutput());
+        assertEquals(expectedOutput, outputWriter.getOutput());
     }
 
     @Test
@@ -63,16 +63,15 @@ public class MainMenuTest {
         TestOutputWriter outputWriter = new TestOutputWriter();
         MainMenu mainMenu = new MainMenu(inputReader, outputWriter);
 
-        ExpectedOutput preTestedOutput=new ExpectedOutput();
-        List<String> requiredOutput=new ArrayList<>(preTestedOutput.getListBooksOutput());
+        ExpectedOutput preTestedOutput = new ExpectedOutput();
+        List<String> requiredOutput = new ArrayList<>(preTestedOutput.getListBooksOutput());
         requiredOutput.addAll(preTestedOutput.getMenuDisplayOutput());
         requiredOutput.add(QuitMenuItem.QUIT_MESSAGE);
 
         mainMenu.performSelectedAction();
 
-        assertEquals(requiredOutput,outputWriter.getOutput());
+        assertEquals(requiredOutput, outputWriter.getOutput());
 
     }
-
 
 }

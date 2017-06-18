@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import com.twu.inputOutput.OutputWriter;
 import com.twu.mockModels.TestInputReader;
 import com.twu.mockModels.TestOutputWriter;
 import org.junit.Test;
@@ -8,7 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by pujag on 6/
+ * tests features of checkOutBookMenuItem
  */
 public class CheckOutBookMenuItemTest {
 
@@ -28,4 +27,5 @@ public class CheckOutBookMenuItemTest {
         assertEquals(CheckOutBookMenuItem.SUCCESSFUL_CHECKOUT_MESSAGE, outputWriter.getOutput().get(1));
         assertEquals(CheckOutBookMenuItem.UNSUCCESSFUL_CHECKOUT_MESSAGE, outputWriter.getOutput().get(3));
     }
+
 }

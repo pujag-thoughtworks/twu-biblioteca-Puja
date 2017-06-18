@@ -19,4 +19,5 @@ public class QuitMenuItemTest {
 
         assertEquals(QuitMenuItem.QUIT_MESSAGE, testOutputWriter.getOutput().get(0));
     }
+
 }

@@ -20,7 +20,7 @@ public class ListBooksMenuItemTest {
 
         BookStorage bookStorage = new BookStorage();
         TestOutputWriter outputWriter = new TestOutputWriter();
-        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(outputWriter,new Librarian());
+        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(outputWriter, new Librarian());
 
         List<String> expectedOutput = new ArrayList<>();
         expectedOutput.add(ListBooksMenuItem.MENU_DESCRIPTION_MESSAGE);

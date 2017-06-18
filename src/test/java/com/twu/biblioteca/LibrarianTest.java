@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import com.twu.Resources.BookStorage;
 import org.junit.Test;
 
 import java.util.List;
@@ -30,9 +29,9 @@ public class LibrarianTest {
         Book requestedBook = availableBooks.get(0);
         librarian.checkoutBook(requestedBook.getName());
 
-        boolean output=librarian.isBookAvailableForCheckout(requestedBook.getName());
+        boolean output = librarian.isBookAvailableForCheckout(requestedBook.getName());
 
-        assertEquals(false,output);
+        assertEquals(false, output);
     }
 
     @Test
@@ -46,6 +45,7 @@ public class LibrarianTest {
 
         assertTrue(availableBooks.contains(requestedBook));
     }
+
     @Test
     public void shouldKnowIfABookBelongsToLibrary() {
         Librarian librarian = new Librarian();

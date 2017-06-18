@@ -5,13 +5,13 @@ import com.twu.inputOutput.OutputWriter;
 /**
  * created to map invalid menu selection by the user.
  */
-public class InvalidMenuItem implements MenuItem {
+class InvalidMenuItem implements MenuItem {
 
-    public static final String OPTION_INVALID_MESSAGE = "Select a valid option!\n";
+    static final String OPTION_INVALID_MESSAGE = "Select a valid option!\n";
     OutputWriter outputWriter;
 
     InvalidMenuItem(OutputWriter outputWriter) {
-        this.outputWriter=outputWriter;
+        this.outputWriter = outputWriter;
     }
 
     @Override
@@ -23,4 +23,5 @@ public class InvalidMenuItem implements MenuItem {
     public String getMenuName() {
         return null;
     }
+
 }

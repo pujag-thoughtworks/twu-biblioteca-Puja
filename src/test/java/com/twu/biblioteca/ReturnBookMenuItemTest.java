@@ -28,11 +28,10 @@ public class ReturnBookMenuItemTest {
     }
 
     @Test
-    public void shouldDisplayFailureMessageOnUnSuccessfulReturn() {
+    public void shouldDisplayFailureMessageOnUnsuccessfulReturn() {
 
         Librarian librarian = new Librarian();
-        Book randomBook = new Book("hh", "kk", 2004);
-        TestInputReader inputReader = new TestInputReader("hh");
+        TestInputReader inputReader = new TestInputReader("The ultimate gift");
         TestOutputWriter outputWriter = new TestOutputWriter();
         ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(inputReader, outputWriter, librarian);
 
@@ -40,4 +39,5 @@ public class ReturnBookMenuItemTest {
 
         assertEquals(ReturnBookMenuItem.UNSUCCESSFUL_RETURN_MESSAGE, outputWriter.getOutput().get(1));
     }
+
 }

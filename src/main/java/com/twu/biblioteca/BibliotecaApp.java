@@ -25,4 +25,5 @@ public class BibliotecaApp {
     private static ConsoleOutputWriter getConsoleWriter() {
         return new ConsoleOutputWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
     }
+
 }

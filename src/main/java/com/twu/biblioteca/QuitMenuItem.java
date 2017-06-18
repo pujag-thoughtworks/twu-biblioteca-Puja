@@ -8,7 +8,7 @@ import com.twu.inputOutput.OutputWriter;
 public class QuitMenuItem implements MenuItem {
 
     OutputWriter outputWriter;
-    public static final String QUIT_MESSAGE = "Thank you for using Biblioteca :)\n";
+    static final String QUIT_MESSAGE = "Thank you for using Biblioteca :)\n";
     public static final String MENU_NAME = "Quit Biblioteca";
 
     QuitMenuItem(OutputWriter outputWriter) {

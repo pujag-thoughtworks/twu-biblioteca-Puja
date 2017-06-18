@@ -5,5 +5,5 @@ package com.twu.inputOutput;
  */
 public interface InputReader {
 
-    public String read();
+    String read();
 }

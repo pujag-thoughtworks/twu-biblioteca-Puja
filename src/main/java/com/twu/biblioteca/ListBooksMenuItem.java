@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import com.twu.Resources.BookStorage;
 import com.twu.inputOutput.OutputWriter;
 
 import java.util.List;
@@ -10,15 +9,13 @@ import java.util.List;
  */
 public class ListBooksMenuItem implements MenuItem {
 
-    public static final String MENU_NAME="List available books";
-    public static final String MENU_DESCRIPTION_MESSAGE="Available books are:\n";
-    Librarian librarian;
+    public static final String MENU_NAME = "List available books";
+    public static final String MENU_DESCRIPTION_MESSAGE = "Available books are:\n";
     private OutputWriter outputWriter;
     private List<Book> bookList;
 
-    public ListBooksMenuItem(OutputWriter outputWriter, Librarian librarian) {
+    ListBooksMenuItem(OutputWriter outputWriter, Librarian librarian) {
         this.outputWriter = outputWriter;
-        this.librarian=librarian;
         bookList = librarian.getAvailableBooks();
     }
 
@@ -28,7 +25,9 @@ public class ListBooksMenuItem implements MenuItem {
             outputWriter.write(book.toString());
     }
 
+    @Override
     public String getMenuName() {
         return MENU_NAME;
     }
+
 }

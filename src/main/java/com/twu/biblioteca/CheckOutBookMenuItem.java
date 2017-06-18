@@ -34,11 +34,11 @@ public class CheckOutBookMenuItem implements MenuItem {
         }
         librarian.checkoutBook(bookName);
         outputWriter.write(SUCCESSFUL_CHECKOUT_MESSAGE);
-
     }
 
     @Override
     public String getMenuName() {
         return MENU_NAME;
     }
+
 }

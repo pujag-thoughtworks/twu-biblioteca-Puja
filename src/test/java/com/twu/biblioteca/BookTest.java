@@ -39,9 +39,9 @@ public class BookTest {
 
     @Test
     public void booksWithSameDetailsShouldBeSame() {
-        Book book1=new Book("2 States","Chetan Bhagat",2005);
-        Book book2=new Book("2 States","Chetan Bhagat",2005);
-        assertEquals(book1,book2);
+        Book book1 = new Book("2 States", "Chetan Bhagat", 2005);
+        Book book2 = new Book("2 States", "Chetan Bhagat", 2005);
+        assertEquals(book1, book2);
     }
 
 }

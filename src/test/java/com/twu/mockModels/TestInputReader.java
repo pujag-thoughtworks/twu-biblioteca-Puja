@@ -8,16 +8,16 @@ import com.twu.inputOutput.InputReader;
 public class TestInputReader implements InputReader {
 
     String[] input;
-    int noOfReads=0;
+    int noOfReads = 0;
 
     public TestInputReader(String inputString) {
-        input=inputString.split("\n");
+        input = inputString.split("\n");
 
     }
 
     @Override
     public String read() {
-        String givenInput= input[noOfReads];
+        String givenInput = input[noOfReads];
         noOfReads++;
         return givenInput;
     }
@@ -25,4 +25,5 @@ public class TestInputReader implements InputReader {
     public int getNoOfReads() {
         return noOfReads;
     }
+
 }

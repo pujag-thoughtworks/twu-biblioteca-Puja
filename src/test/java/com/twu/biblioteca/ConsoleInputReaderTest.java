@@ -22,4 +22,5 @@ public class ConsoleInputReaderTest {
         assertEquals(str, inputRead);
 
     }
+
 }

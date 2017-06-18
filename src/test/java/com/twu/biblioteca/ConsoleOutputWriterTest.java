@@ -9,7 +9,7 @@ import java.io.StringWriter;
 import static junit.framework.TestCase.assertEquals;
 
 /**
- * Created by pujag on 6/15/17.
+ * Class to write output to console
  */
 public class ConsoleOutputWriterTest {
 
@@ -24,6 +24,5 @@ public class ConsoleOutputWriterTest {
         assertEquals("Hello world\n", stringWriter.toString());
 
     }
-
 
 }

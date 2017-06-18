@@ -17,16 +17,11 @@ public class MainMenu {
 
     private OutputWriter outputWriter;
     private InputReader inputReader;
-    Librarian librarian;
-    ListBooksMenuItem listBooksMenuItem;
-    CheckOutBookMenuItem checkOutBookMenuItem;
-    ReturnBookMenuItem returnBookMenuItem;
-    QuitMenuItem quitMenuItem;
 
 
     private Map<Integer, MenuItem> menuMapper;
 
-    public MainMenu(InputReader inputReader, OutputWriter outputWriter) {
+    MainMenu(InputReader inputReader, OutputWriter outputWriter) {
         this.outputWriter = outputWriter;
         this.inputReader = inputReader;
         initializeFields(inputReader, outputWriter);
@@ -34,11 +29,11 @@ public class MainMenu {
     }
 
     private void initializeFields(InputReader inputReader, OutputWriter outputWriter) {
-        librarian = new Librarian();
-        listBooksMenuItem = new ListBooksMenuItem(outputWriter, librarian);
-        checkOutBookMenuItem = new CheckOutBookMenuItem(inputReader, outputWriter, librarian);
-        returnBookMenuItem = new ReturnBookMenuItem(inputReader, outputWriter, librarian);
-        quitMenuItem = new QuitMenuItem(outputWriter);
+        Librarian librarian = new Librarian();
+        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(outputWriter, librarian);
+        CheckOutBookMenuItem checkOutBookMenuItem = new CheckOutBookMenuItem(inputReader, outputWriter, librarian);
+        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(inputReader, outputWriter, librarian);
+        QuitMenuItem quitMenuItem = new QuitMenuItem(outputWriter);
 
         menuMapper = new HashMap<>();
         menuMapper.put(1, listBooksMenuItem);
@@ -48,7 +43,7 @@ public class MainMenu {
 
     }
 
-    public void displayMenu() {
+    void displayMenu() {
         outputWriter.write(DISPLAY_MESSAGE);
         for (Map.Entry<Integer, MenuItem> mapEntry : menuMapper.entrySet()) {
             String option = mapEntry.getKey() + ") " + mapEntry.getValue().getMenuName();
@@ -57,10 +52,9 @@ public class MainMenu {
         outputWriter.write(MESSAGE_TO_REQUEST_INPUT);
     }
 
-    public void performSelectedAction() {
+    void performSelectedAction() {
         MenuItem selectedMenu;
         String menuName;
-
         do {
             int userInput = readUserInput();
             selectedMenu = menuMapper.getOrDefault(userInput, new InvalidMenuItem(outputWriter));
