@@ -21,15 +21,6 @@ public class Librarian {
         initialize();
     }
 
-    public boolean isBookAvailable(String bookName) {
-        String formattedBookName = bookName.toLowerCase();
-        Book requestedBook = titleToBook.getOrDefault(formattedBookName, null);
-
-        if (requestedBook == null || !availableBooks.contains(requestedBook))
-            return false;
-        return true;
-    }
-
     private void initialize() {
         availableBooks = bookStorage.getBookList();
         titleToBook = new HashMap<>();
@@ -39,9 +30,30 @@ public class Librarian {
         }
     }
 
+    public boolean isBookAvailableForCheckout(String bookName) {
+        String formattedBookName = bookName.toLowerCase();
+        Book requestedBook = titleToBook.getOrDefault(formattedBookName, null);
+
+        if (requestedBook == null || !availableBooks.contains(requestedBook))
+            return false;
+        return true;
+    }
+
+    public boolean doesBookBelongToLibrary(String bookName) {
+        String formattedBookName = bookName.toLowerCase();
+        if(titleToBook.containsKey(formattedBookName))
+            return true;
+        return false;
+    }
+
     public void checkoutBook(String bookTitle) {
-        Book requiredBook = titleToBook.get(bookTitle.toLowerCase());
-        availableBooks.remove(requiredBook);
+        Book requestedBook = titleToBook.get(bookTitle.toLowerCase());
+        availableBooks.remove(requestedBook);
+    }
+
+    public void returnBook(String bookTitle) {
+        Book bookToReturn=titleToBook.get(bookTitle.toLowerCase());
+        availableBooks.add(bookToReturn);
     }
 
     public List<Book> getAvailableBooks() {
