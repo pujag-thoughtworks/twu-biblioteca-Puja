@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * class to test ConsoleInputReader
  */
-public class InputReaderTest {
+public class ConsoleInputReaderTest {
 
     @Test
     public void shouldReadInput() {

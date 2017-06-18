@@ -1,24 +1,33 @@
 package com.twu.biblioteca;
 
 import com.twu.Resources.BookStorage;
-import com.twu.inputOutput.OutputWriter;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
- *
+ * Class to handle internal details of library.
+ * It maintains information about book availability and what are the books belonging to library.
  */
 public class Librarian {
 
-    BookStorage bookStorage;
-    Map<String, Book> titleToBook;
-    List<Book> availableBooks;
+    private BookStorage bookStorage;
+    private Map<String, Book> titleToBook;
+    private List<Book> availableBooks;
 
     public Librarian() {
         bookStorage = new BookStorage();
         initialize();
+    }
+
+    public boolean isBookAvailable(String bookName) {
+        String formattedBookName = bookName.toLowerCase();
+        Book requestedBook = titleToBook.getOrDefault(formattedBookName, null);
+
+        if (requestedBook == null || !availableBooks.contains(requestedBook))
+            return false;
+        return true;
     }
 
     private void initialize() {
