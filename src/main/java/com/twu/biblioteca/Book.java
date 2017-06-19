@@ -3,7 +3,8 @@ package com.twu.biblioteca;
 /**
  * Describes a book.
  */
-public class Book {
+public class Book implements Item {
+    
     private String name;
     private String author;
     private int publishingYear;
@@ -14,16 +15,8 @@ public class Book {
         this.publishingYear = publishingYear;
     }
 
-    String getName() {
+    public String getName() {
         return name;
-    }
-
-    String getAuthor() {
-        return author;
-    }
-
-    int getPublishingYear() {
-        return publishingYear;
     }
 
     public String toString() {
