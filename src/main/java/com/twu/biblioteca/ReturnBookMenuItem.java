@@ -15,23 +15,23 @@ public class ReturnBookMenuItem implements MenuItem {
 
     private InputReader inputReader;
     private OutputWriter outputWriter;
-    private Librarian librarian;
+    private Inventory<Book> inventory;
 
-    ReturnBookMenuItem(InputReader inputReader, OutputWriter outputWriter, Librarian librarian) {
+    ReturnBookMenuItem(InputReader inputReader, OutputWriter outputWriter, Inventory<Book> inventory) {
         this.inputReader = inputReader;
         this.outputWriter = outputWriter;
-        this.librarian = librarian;
+        this.inventory = inventory;
     }
 
     @Override
     public void performAction() {
         outputWriter.write(MESSAGE_TO_REQUEST_RETURN);
         String bookName = inputReader.read();
-        if (!librarian.doesBookBelongsToLibrary(bookName)) {
+        if (!inventory.doesItemBelongsToLibrary(bookName)) {
             outputWriter.write(UNSUCCESSFUL_RETURN_MESSAGE);
             return;
         }
-        librarian.returnBook(bookName);
+        inventory.returnItem(bookName);
         outputWriter.write(SUCCESSFUL_RETURN_MESSAGE);
 
     }

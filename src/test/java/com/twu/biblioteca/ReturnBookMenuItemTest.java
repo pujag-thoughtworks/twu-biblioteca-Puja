@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import com.twu.mockModels.TestInputReader;
 import com.twu.mockModels.TestOutputWriter;
+import com.twu.resources.BookStorage;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -13,14 +14,14 @@ public class ReturnBookMenuItemTest {
     @Test
     public void shouldDisplaySuccessMessageOnSuccessfulReturn() {
 
-        Librarian librarian = new Librarian();
-        Book requestedBook = librarian.getAvailableBooks().get(0);
+        Inventory<Book> inventory = new Inventory<>(new BookStorage().getBookList());
+        Book requestedBook = inventory.getAvailableItems().get(0);
         String bookName = requestedBook.getName();
 
         TestInputReader inputReader = new TestInputReader(bookName + "\n" + bookName);
         TestOutputWriter outputWriter = new TestOutputWriter();
-        librarian.checkoutBook(bookName);
-        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(inputReader, outputWriter, librarian);
+        inventory.checkoutItem(bookName);
+        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(inputReader, outputWriter, inventory);
 
         returnBookMenuItem.performAction();
 
@@ -30,10 +31,10 @@ public class ReturnBookMenuItemTest {
     @Test
     public void shouldDisplayFailureMessageOnUnsuccessfulReturn() {
 
-        Librarian librarian = new Librarian();
+        Inventory<Book> inventory = new Inventory<>(new BookStorage().getBookList());
         TestInputReader inputReader = new TestInputReader("The ultimate gift");
         TestOutputWriter outputWriter = new TestOutputWriter();
-        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(inputReader, outputWriter, librarian);
+        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(inputReader, outputWriter, inventory);
 
         returnBookMenuItem.performAction();
 

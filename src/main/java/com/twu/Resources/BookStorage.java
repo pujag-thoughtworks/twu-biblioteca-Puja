@@ -1,4 +1,4 @@
-package com.twu.Resources;
+package com.twu.resources;
 
 import com.twu.biblioteca.Book;
 

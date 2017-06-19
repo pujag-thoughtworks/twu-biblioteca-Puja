@@ -6,7 +6,7 @@ package com.twu.biblioteca;
 public class MovieRating {
     int rating;
 
-    MovieRating(int i) {
+    public MovieRating(int i) {
         if (i > 10 || i < 1)
             throw new IllegalArgumentException();
         rating = i;

@@ -5,6 +5,8 @@ package com.twu.biblioteca;
  */
 public class Movie implements Item {
 
+    private static String ITEM_NAME="movies";
+
     private String name;
     private String director;
     private int year;
@@ -21,6 +23,11 @@ public class Movie implements Item {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String getItemName() {
+        return ITEM_NAME;
     }
 
     public int getRating() {

@@ -4,6 +4,7 @@ import com.twu.inputOutput.ConsoleOutputWriter;
 import com.twu.inputOutput.OutputWriter;
 
 import java.io.BufferedWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,3 +28,4 @@ public class TestOutputWriter implements OutputWriter {
         return output;
     }
 }
+

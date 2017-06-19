@@ -2,6 +2,8 @@ package com.twu.biblioteca;
 
 import com.twu.inputOutput.InputReader;
 import com.twu.inputOutput.OutputWriter;
+import com.twu.resources.BookStorage;
+import com.twu.resources.MovieStorage;
 
 import java.util.*;
 
@@ -29,14 +31,21 @@ public class MainMenu {
     }
 
     private void initializeFields(InputReader inputReader, OutputWriter outputWriter) {
-        Librarian librarian = new Librarian();
-        ListBooksMenuItem listBooksMenuItem = new ListBooksMenuItem(outputWriter, librarian);
-        CheckOutBookMenuItem checkOutBookMenuItem = new CheckOutBookMenuItem(inputReader, outputWriter, librarian);
-        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(inputReader, outputWriter, librarian);
+        BookStorage bookStorage=new BookStorage();
+        MovieStorage movieStorage=new MovieStorage();
+        Inventory<Book> bookInventory = new Inventory<>(bookStorage.getBookList());
+        Inventory<Movie> movieInventory=new Inventory<>(movieStorage.getMovieList());
+
+        ListMenuItem<Book> listBookMenuItem = new ListMenuItem<>(outputWriter, bookInventory);
+        listBookMenuItem.setDescriptionMessage(Constants.LIST_BOOK_DESCRIPTION_MESSAGE);
+        CheckOutMenuItem<Book> checkOutBookMenuItem = new CheckOutMenuItem<>(inputReader, outputWriter, bookInventory);
+        checkOutBookMenuItem.setDisplayMessage(Constants.MESSAGE_TO_REQUEST_CHECKOUT,
+                Constants.UNSUCCESSFUL_CHECKOUT_MESSAGE,Constants.SUCCESSFUL_CHECKOUT_MESSAGE);
+        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(inputReader, outputWriter, bookInventory);
         QuitMenuItem quitMenuItem = new QuitMenuItem(outputWriter);
 
         menuMapper = new HashMap<>();
-        menuMapper.put(1, listBooksMenuItem);
+        menuMapper.put(1, listBookMenuItem);
         menuMapper.put(2, checkOutBookMenuItem);
         menuMapper.put(3, returnBookMenuItem);
         menuMapper.put(4, quitMenuItem);
@@ -55,7 +64,7 @@ public class MainMenu {
     void performSelectedAction() {
         MenuItem selectedMenu;
         String menuName;
-        do {
+       do {
             int userInput = readUserInput();
             selectedMenu = menuMapper.getOrDefault(userInput, new InvalidMenuItem(outputWriter));
             menuName = selectedMenu.getMenuName();
