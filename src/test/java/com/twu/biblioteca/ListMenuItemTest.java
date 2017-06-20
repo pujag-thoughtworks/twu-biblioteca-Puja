@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import com.twu.resources.BookStorage;
 import com.twu.mockModels.TestOutputWriter;
+import com.twu.resources.MovieStorage;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -29,6 +30,24 @@ public class ListMenuItemTest {
             expectedOutput.add(book.toString());
 
         listBookMenuItem.performAction();
+
+        assertEquals(expectedOutput, outputWriter.getOutput());
+    }
+
+    @Test
+    public void shouldWriteAllMoviesFromList() {
+
+        MovieStorage movieStorage = new MovieStorage();
+        TestOutputWriter outputWriter = new TestOutputWriter();
+        ListMenuItem<Movie> listMovieMenuItem = new ListMenuItem<>(outputWriter, new Inventory<>(movieStorage.getMovieList()));
+        listMovieMenuItem.setDescriptionMessage(Constants.LIST_MOVIE_DESCRIPTION_MESSAGE);
+
+        List<String> expectedOutput = new ArrayList<>();
+        expectedOutput.add(Constants.LIST_MOVIE_DESCRIPTION_MESSAGE);
+        for (Movie movie : movieStorage.getMovieList())
+            expectedOutput.add(movie.toString());
+
+        listMovieMenuItem.performAction();
 
         assertEquals(expectedOutput, outputWriter.getOutput());
     }
