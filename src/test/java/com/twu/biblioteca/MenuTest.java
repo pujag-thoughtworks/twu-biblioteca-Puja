@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Test for menu items.
  */
-public class MainMenuTest {
+public class MenuTest {
 
     @Test
     public void shouldDisplayMenuOptions() {
@@ -20,12 +20,12 @@ public class MainMenuTest {
         TestOutputWriter outputWriter = new TestOutputWriter();
         TestInputReader inputReader = new TestInputReader("");
         MenuProvider menuProvider=new MenuProvider(inputReader,outputWriter);
-        MainMenu mainMenu = new MainMenu(inputReader, outputWriter,menuProvider.provideMenu());
+        Menu menu = new Menu(inputReader, outputWriter,menuProvider.provideMenu());
 
         ExpectedOutput expectedOutput = new ExpectedOutput();
 
 
-        mainMenu.displayMenu();
+        menu.displayMenu();
 
         assertEquals(expectedOutput.getMenuDisplayOutput(menuProvider.provideMenu()), outputWriter.getOutput());
     }
@@ -36,9 +36,9 @@ public class MainMenuTest {
         TestOutputWriter outputWriter = new TestOutputWriter();
         TestInputReader inputReader = new TestInputReader("5");
         MenuProvider menuProvider=new MenuProvider(inputReader,outputWriter);
-        MainMenu mainMenu = new MainMenu(inputReader, outputWriter,menuProvider.provideMenu());
+        Menu menu = new Menu(inputReader, outputWriter,menuProvider.provideMenu());
 
-        mainMenu.performSelectedAction();
+        menu.performSelectedAction();
 
         assertEquals(QuitMenuItem.QUIT_MESSAGE, outputWriter.getOutput().get(0));
     }
@@ -49,14 +49,14 @@ public class MainMenuTest {
         TestInputReader inputReader = new TestInputReader("8\na\n5");
         TestOutputWriter outputWriter = new TestOutputWriter();
         MenuProvider menuProvider=new MenuProvider(inputReader,outputWriter);
-        MainMenu mainMenu = new MainMenu(inputReader, outputWriter,menuProvider.provideMenu());
+        Menu menu = new Menu(inputReader, outputWriter,menuProvider.provideMenu());
 
         List<String> expectedOutput = new ArrayList<>();
         expectedOutput.add(InvalidMenuItem.OPTION_INVALID_MESSAGE);
         expectedOutput.add(InvalidMenuItem.OPTION_INVALID_MESSAGE);
         expectedOutput.add(QuitMenuItem.QUIT_MESSAGE);
 
-        mainMenu.performSelectedAction();
+        menu.performSelectedAction();
 
         assertEquals(expectedOutput, outputWriter.getOutput());
     }
@@ -67,14 +67,14 @@ public class MainMenuTest {
         TestInputReader inputReader = new TestInputReader("1\n5");
         TestOutputWriter outputWriter = new TestOutputWriter();
         MenuProvider menuProvider=new MenuProvider(inputReader,outputWriter);
-        MainMenu mainMenu = new MainMenu(inputReader, outputWriter,menuProvider.provideMenu());
+        Menu menu = new Menu(inputReader, outputWriter,menuProvider.provideMenu());
 
         ExpectedOutput preTestedOutput = new ExpectedOutput();
         List<String> requiredOutput = new ArrayList<>(preTestedOutput.getListBooksOutput());
         requiredOutput.addAll(preTestedOutput.getMenuDisplayOutput(menuProvider.provideMenu()));
         requiredOutput.add(QuitMenuItem.QUIT_MESSAGE);
 
-        mainMenu.performSelectedAction();
+        menu.performSelectedAction();
 
         assertEquals(requiredOutput, outputWriter.getOutput());
 

@@ -12,7 +12,7 @@ import java.util.*;
  * It lists the available options and users have to input their respective choice
  */
 
-public class MainMenu {
+public class Menu {
 
     public static final String DISPLAY_MESSAGE = "\nMENU:";
     public static final String MESSAGE_TO_REQUEST_INPUT = "\nPlease enter your choice: ";
@@ -21,7 +21,7 @@ public class MainMenu {
     private InputReader inputReader;
     private List<MenuItem> menuList;
 
-    MainMenu(InputReader inputReader, OutputWriter outputWriter, List<MenuItem> menuList) {
+    Menu(InputReader inputReader, OutputWriter outputWriter, List<MenuItem> menuList) {
         this.outputWriter = outputWriter;
         this.inputReader = inputReader;
         this.menuList = menuList;
