@@ -18,7 +18,7 @@ public class CheckOutMenuItem<ItemType extends Item> implements MenuItem {
     private String unsuccessfulCheckoutMessage;
     private String successfulCheckoutMessage;
 
-    CheckOutMenuItem(InputReader inputReader, OutputWriter outputWriter, Inventory<ItemType> inventory) {
+    CheckOutMenuItem(InputReader inputReader, OutputWriter outputWriter, Inventory<ItemType> inventory, Customer customer) {
         this.inputReader = inputReader;
         this.outputWriter = outputWriter;
         this.inventory = inventory;

@@ -47,7 +47,7 @@ public class Menu {
             selectedMenu = menuList.get(userInput);
             menuName = selectedMenu.getMenuName();
             selectedMenu.performAction();
-            if (menuName != null && !menuName.equals(QuitMenuItem.MENU_NAME))
+            if (menuName != null && !menuName.equals(QuitMenuItem.MENU_NAME) && !menuName.equals(Constants.LOG_OUT_MENU_NAME))
                 displayMenu();
         }
         while (menuName == null || (!menuName.equals(Constants.LOG_OUT_MENU_NAME) && !menuName.equals(QuitMenuItem.MENU_NAME)));

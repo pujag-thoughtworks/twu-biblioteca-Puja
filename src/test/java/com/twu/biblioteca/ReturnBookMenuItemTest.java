@@ -21,7 +21,7 @@ public class ReturnBookMenuItemTest {
         TestInputReader inputReader = new TestInputReader(bookName + "\n" + bookName);
         TestOutputWriter outputWriter = new TestOutputWriter();
         inventory.checkoutItem(bookName);
-        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(inputReader, outputWriter, inventory);
+        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(inputReader, outputWriter, inventory, null);
 
         returnBookMenuItem.performAction();
 
@@ -34,7 +34,7 @@ public class ReturnBookMenuItemTest {
         Inventory<Book> inventory = new Inventory<>(new BookStorage().getBookList());
         TestInputReader inputReader = new TestInputReader("The ultimate gift");
         TestOutputWriter outputWriter = new TestOutputWriter();
-        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(inputReader, outputWriter, inventory);
+        ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(inputReader, outputWriter, inventory, null);
 
         returnBookMenuItem.performAction();
 

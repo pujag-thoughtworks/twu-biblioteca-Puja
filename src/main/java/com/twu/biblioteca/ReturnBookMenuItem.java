@@ -17,7 +17,7 @@ public class ReturnBookMenuItem implements MenuItem {
     private OutputWriter outputWriter;
     private Inventory<Book> inventory;
 
-    ReturnBookMenuItem(InputReader inputReader, OutputWriter outputWriter, Inventory<Book> inventory) {
+    ReturnBookMenuItem(InputReader inputReader, OutputWriter outputWriter, Inventory<Book> inventory, Customer customer) {
         this.inputReader = inputReader;
         this.outputWriter = outputWriter;
         this.inventory = inventory;

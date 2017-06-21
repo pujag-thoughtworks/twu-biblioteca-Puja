@@ -13,14 +13,15 @@ import java.util.List;
  */
 public class ExpectedOutput {
 
-    public List<String> getMenuDisplayOutput() {
+    public List<String> getMenuDisplayOutput(List<MenuItem> menuList) {
         List<String> output = new ArrayList<>();
-        output.add(MainMenu.DISPLAY_MESSAGE);
-        output.add(1 + ") " + ListMenuItem.MENU_NAME);
-        output.add(2 + ") " + CheckOutMenuItem.MENU_NAME);
-        output.add(3 + ") " + ReturnBookMenuItem.MENU_NAME);
-        output.add(4 + ") " + QuitMenuItem.MENU_NAME);
-        output.add(MainMenu.MESSAGE_TO_REQUEST_INPUT);
+        output.add(Menu.DISPLAY_MESSAGE);
+        int index=1;
+        for(MenuItem menuItem:menuList) {
+            output.add(index+ ") " +menuItem.getMenuName());
+            index++;
+        }
+        output.add(Menu.MESSAGE_TO_REQUEST_INPUT);
         return output;
     }
 

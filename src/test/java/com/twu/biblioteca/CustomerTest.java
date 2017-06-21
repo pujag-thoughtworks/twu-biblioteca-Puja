@@ -21,8 +21,16 @@ public class CustomerTest {
     @Test
     public void shouldGetPassword() {
         Customer customer =new Customer("Ram","ram@gmail.com","New Delhi","CUS-0001","password");
-        String output= customer.getLibraryNo();
+        String output= customer.getPassword();
         assertEquals("password",output);
+
+    }
+
+    @Test
+    public void shouldGetLibraryNo() {
+        Customer customer =new Customer("Ram","ram@gmail.com","New Delhi","CUS-0001","password");
+        String output= customer.getLibraryNo();
+        assertEquals("CUS-0001",output);
 
     }
 

@@ -1,7 +1,27 @@
 package com.twu.biblioteca;
 
+import com.twu.inputOutput.OutputWriter;
+
 /**
- * Created by pujag on 6/21/17.
+ * menu item for logging out from account specific menu.
+ * It is used for both customer as well as librarian specific logout.
  */
-public class LogOutMenuItem {
+public class LogOutMenuItem implements MenuItem {
+
+    public static final String LOG_OUT_MESSAGE="Successfully logged out";
+    private OutputWriter outputWriter;
+
+    public LogOutMenuItem(OutputWriter outputWriter) {
+        this.outputWriter=outputWriter;
+    }
+
+    @Override
+    public void performAction() {
+        outputWriter.write(LOG_OUT_MESSAGE);
+    }
+
+    @Override
+    public String getMenuName() {
+        return Constants.LOG_OUT_MENU_NAME;
+    }
 }

@@ -40,7 +40,7 @@ public class MenuProviderTest {
         String[] expectedMenuNames= {Constants.VIEW_PROFILE_MENU_NAME,ListMenuItem.MENU_NAME,ListMenuItem.MENU_NAME,CheckOutMenuItem.MENU_NAME,
                 CheckOutMenuItem.MENU_NAME,ReturnBookMenuItem.MENU_NAME,Constants.LOG_OUT_MENU_NAME };
 
-        List<MenuItem> output=menuProvider.provideMenu(new Customer());
+        List<MenuItem> output=menuProvider.provideMenu(new Customer("Ram","ab@gmail.com","Punjab","CUS-0008","password"));
         List<String> menuNamesOfItemsInOutput=new ArrayList<>();
         for(MenuItem menuItem:output) {
             menuNamesOfItemsInOutput.add(menuItem.getMenuName()); }

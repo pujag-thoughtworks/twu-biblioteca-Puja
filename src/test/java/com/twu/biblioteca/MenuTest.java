@@ -4,6 +4,7 @@ import com.twu.mockModels.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -77,6 +78,22 @@ public class MenuTest {
         menu.performSelectedAction();
 
         assertEquals(requiredOutput, outputWriter.getOutput());
+
+    }
+
+    @Test
+    public void LoggingOutShouldQuitFromMenu() {
+        TestInputReader inputReader = new TestInputReader("7");
+        TestOutputWriter outputWriter = new TestOutputWriter();
+        Customer customer=new UserDirectory().getCustomer("CUS-0001");
+
+        MenuProvider menuProvider=new MenuProvider(inputReader,outputWriter);
+        Menu menu = new Menu(inputReader, outputWriter,menuProvider.provideMenu(customer));
+        String[] expectedOutput={LogOutMenuItem.LOG_OUT_MESSAGE,};
+
+        menu.performSelectedAction();
+
+        assertEquals(Arrays.asList(expectedOutput),outputWriter.getOutput());
 
     }
 

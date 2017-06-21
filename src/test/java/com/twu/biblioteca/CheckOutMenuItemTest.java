@@ -22,7 +22,7 @@ public class CheckOutMenuItemTest {
 
         TestInputReader inputReader = new TestInputReader(bookName + "\n" + bookName);
         TestOutputWriter outputWriter = new TestOutputWriter();
-        CheckOutMenuItem<Book> checkOutMenuItem = new CheckOutMenuItem<>(inputReader, outputWriter, inventory);
+        CheckOutMenuItem<Book> checkOutMenuItem = new CheckOutMenuItem<>(inputReader, outputWriter, inventory, null);
         checkOutMenuItem.setDisplayMessage(Constants.MESSAGE_TO_REQUEST_CHECKOUT_BOOK,
                 Constants.UNSUCCESSFUL_CHECKOUT_BOOK_MESSAGE,Constants.SUCCESSFUL_CHECKOUT_BOOK_MESSAGE);
 
@@ -42,7 +42,7 @@ public class CheckOutMenuItemTest {
 
         TestInputReader inputReader = new TestInputReader(movieName + "\n" + movieName);
         TestOutputWriter outputWriter = new TestOutputWriter();
-        CheckOutMenuItem<Movie> checkOutMovie = new CheckOutMenuItem<>(inputReader, outputWriter, inventory);
+        CheckOutMenuItem<Movie> checkOutMovie = new CheckOutMenuItem<>(inputReader, outputWriter, inventory, null);
         checkOutMovie.setDisplayMessage(Constants.MESSAGE_TO_REQUEST_CHECKOUT_MOVIE,
                 Constants.UNSUCCESSFUL_CHECKOUT_MOVIE_MESSAGE,Constants.SUCCESSFUL_CHECKOUT_MOVIE_MESSAGE);
 
