@@ -19,20 +19,24 @@ public class MainMenuTest {
 
         TestOutputWriter outputWriter = new TestOutputWriter();
         TestInputReader inputReader = new TestInputReader("");
-        MainMenu mainMenu = new MainMenu(inputReader, outputWriter);
+        MenuProvider menuProvider=new MenuProvider(inputReader,outputWriter);
+        MainMenu mainMenu = new MainMenu(inputReader, outputWriter,menuProvider.provideMenu());
+
         ExpectedOutput expectedOutput = new ExpectedOutput();
+
 
         mainMenu.displayMenu();
 
-        assertEquals(expectedOutput.getMenuDisplayOutput(), outputWriter.getOutput());
+        assertEquals(expectedOutput.getMenuDisplayOutput(menuProvider.provideMenu()), outputWriter.getOutput());
     }
 
     @Test
     public void shouldLoadAMenuItemBasedOnSelection() {
 
         TestOutputWriter outputWriter = new TestOutputWriter();
-        TestInputReader inputReader = new TestInputReader("4");
-        MainMenu mainMenu = new MainMenu(inputReader, outputWriter);
+        TestInputReader inputReader = new TestInputReader("5");
+        MenuProvider menuProvider=new MenuProvider(inputReader,outputWriter);
+        MainMenu mainMenu = new MainMenu(inputReader, outputWriter,menuProvider.provideMenu());
 
         mainMenu.performSelectedAction();
 
@@ -42,9 +46,10 @@ public class MainMenuTest {
     @Test
     public void shouldAskForInputUnlessValidInputIsPassed() {
 
-        TestInputReader inputReader = new TestInputReader("8\na\n4");
+        TestInputReader inputReader = new TestInputReader("8\na\n5");
         TestOutputWriter outputWriter = new TestOutputWriter();
-        MainMenu mainMenu = new MainMenu(inputReader, outputWriter);
+        MenuProvider menuProvider=new MenuProvider(inputReader,outputWriter);
+        MainMenu mainMenu = new MainMenu(inputReader, outputWriter,menuProvider.provideMenu());
 
         List<String> expectedOutput = new ArrayList<>();
         expectedOutput.add(InvalidMenuItem.OPTION_INVALID_MESSAGE);
@@ -59,13 +64,14 @@ public class MainMenuTest {
     @Test
     public void userShouldBeAbleToSelectMenuOptionUnlessHeSelectsQuit() {
 
-        TestInputReader inputReader = new TestInputReader("1\n4");
+        TestInputReader inputReader = new TestInputReader("1\n5");
         TestOutputWriter outputWriter = new TestOutputWriter();
-        MainMenu mainMenu = new MainMenu(inputReader, outputWriter);
+        MenuProvider menuProvider=new MenuProvider(inputReader,outputWriter);
+        MainMenu mainMenu = new MainMenu(inputReader, outputWriter,menuProvider.provideMenu());
 
         ExpectedOutput preTestedOutput = new ExpectedOutput();
         List<String> requiredOutput = new ArrayList<>(preTestedOutput.getListBooksOutput());
-        requiredOutput.addAll(preTestedOutput.getMenuDisplayOutput());
+        requiredOutput.addAll(preTestedOutput.getMenuDisplayOutput(menuProvider.provideMenu()));
         requiredOutput.add(QuitMenuItem.QUIT_MESSAGE);
 
         mainMenu.performSelectedAction();
