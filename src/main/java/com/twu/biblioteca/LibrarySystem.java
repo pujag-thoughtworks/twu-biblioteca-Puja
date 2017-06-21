@@ -11,17 +11,18 @@ class LibrarySystem {
     static final String WELCOME_MESSAGE = "\nWELCOME TO BIBLIOTECA";
 
     private OutputWriter outputWriter;
-    private MainMenu mainMenu;
+    private Menu menu;
 
     LibrarySystem(InputReader inputReader, OutputWriter outputWriter) {
         this.outputWriter = outputWriter;
-        mainMenu = new MainMenu(inputReader, outputWriter);
+        MenuProvider menuProvider=new MenuProvider(inputReader,outputWriter);
+        menu = new Menu(inputReader, outputWriter,menuProvider.provideMenu());
     }
 
     void start() {
         outputWriter.write(WELCOME_MESSAGE);
-        mainMenu.displayMenu();
-        mainMenu.performSelectedAction();
+        menu.displayMenu();
+        menu.performSelectedAction();
 
     }
 

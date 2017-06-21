@@ -18,7 +18,7 @@ public class LibrarySystemTest {
     public void shouldWriteWelcomeMessage() {
 
         TestOutputWriter outputWriter = new TestOutputWriter();
-        TestInputReader inputReader = new TestInputReader("1\n4");
+        TestInputReader inputReader = new TestInputReader("1\n5");
         LibrarySystem librarySystem = new LibrarySystem(inputReader, outputWriter);
         List<String> output = outputWriter.getOutput();
 
@@ -30,18 +30,20 @@ public class LibrarySystemTest {
     @Test
     public void sequenceOfOutputShouldBeValid() {
 
-        TestInputReader inputReader = new TestInputReader("1\n4");
+        TestInputReader inputReader = new TestInputReader("1\n5");
         TestOutputWriter outputWriter = new TestOutputWriter();
         LibrarySystem librarySystem = new LibrarySystem(inputReader, outputWriter);
 
+        TestInputReader testInputReader=new TestInputReader("1\n5");
         TestOutputWriter testOutputWriter = new TestOutputWriter();
-        MainMenu mainMenu = new MainMenu(new TestInputReader("1\n4"), testOutputWriter);
+        MenuProvider menuProvider=new MenuProvider(testInputReader,testOutputWriter);
+        Menu menu = new Menu(testInputReader, testOutputWriter,menuProvider.provideMenu());
         List<String> expectedOutput = new ArrayList<>();
         expectedOutput.add(LibrarySystem.WELCOME_MESSAGE);
 
         librarySystem.start();
-        mainMenu.displayMenu();
-        mainMenu.performSelectedAction();
+        menu.displayMenu();
+        menu.performSelectedAction();
 
         expectedOutput.addAll(testOutputWriter.getOutput());
         assertEquals(expectedOutput, outputWriter.getOutput());
