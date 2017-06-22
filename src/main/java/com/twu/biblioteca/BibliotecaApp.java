@@ -26,4 +26,8 @@ public class BibliotecaApp {
         return new ConsoleOutputWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
     }
 
+    //TODO: Handle Constants, implement constraint for library no, Remove movie Rating class and implement using constraints
+
+
+
 }

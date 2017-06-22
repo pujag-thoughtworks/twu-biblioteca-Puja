@@ -9,7 +9,7 @@ import com.twu.inputOutput.OutputWriter;
 public class CustomerLoginMenuItem implements MenuItem {
 
     static final String CUSTOMER_LOGIN_MENU_NAME = "Customer Login Menu";
-    static final String LIBRARY_No_REQUEST = "Please enter your library number:";
+    static final String LIBRARY_NO_REQUEST = "Please enter your library number:";
     static final String PASSWORD_REQUEST = "Please enter your password:";
     static final String INVALID_USERNAME = "Username invalid!";
     static final String INCORRECT_PASSWORD = "Entered password is incorrect!";
@@ -31,7 +31,7 @@ public class CustomerLoginMenuItem implements MenuItem {
 
      Customer authenticateCustomer() {
 
-        outputWriter.write(LIBRARY_No_REQUEST);
+        outputWriter.write(LIBRARY_NO_REQUEST);
         String libraryNo = inputReader.read();
         Customer customer = userDirectory.getCustomer(libraryNo);
         if (customer == null) {

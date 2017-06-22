@@ -15,8 +15,8 @@ class LibrarySystem {
 
     LibrarySystem(InputReader inputReader, OutputWriter outputWriter) {
         this.outputWriter = outputWriter;
-        MenuProvider menuProvider=new MenuProvider(inputReader,outputWriter);
-        menu = new Menu(inputReader, outputWriter,menuProvider.provideMenu());
+        MenuProvider menuProvider = new MenuProvider(inputReader, outputWriter);
+        menu = new Menu(inputReader, outputWriter, menuProvider.provideMenu());
     }
 
     void start() {

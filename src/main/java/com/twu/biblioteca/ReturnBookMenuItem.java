@@ -33,7 +33,7 @@ public class ReturnBookMenuItem implements MenuItem {
             outputWriter.write(UNSUCCESSFUL_RETURN_MESSAGE);
             return;
         }
-        inventory.returnItem(bookName);
+        inventory.returnItem(bookName,loggedInCustomer);
         outputWriter.write(SUCCESSFUL_RETURN_MESSAGE);
 
     }
