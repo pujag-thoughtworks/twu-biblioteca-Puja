@@ -1,16 +1,24 @@
 package com.twu.biblioteca;
 
+import com.twu.inputOutput.OutputWriter;
+
 /**
- * Created by pujag on 6/21/17.
+ * Menu-Item to display customer profile.
  */
 public class ViewProfileMenuItem implements MenuItem {
-    public ViewProfileMenuItem(Customer customer) {
+    Customer loggedInCustomer;
+    OutputWriter outputWriter;
 
+    public ViewProfileMenuItem(OutputWriter outputWriter, Customer customer) {
+        this.outputWriter = outputWriter;
+        loggedInCustomer = customer;
     }
 
     @Override
     public void performAction() {
-
+        String[] profile = loggedInCustomer.getProfile();
+        for (String profileElement : profile)
+            outputWriter.write(profileElement);
     }
 
     @Override
