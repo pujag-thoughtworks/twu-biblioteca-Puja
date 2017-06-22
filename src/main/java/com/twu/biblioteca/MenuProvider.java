@@ -56,7 +56,7 @@ public class MenuProvider {
     List<MenuItem> provideMenu(Customer customer) {
         List<MenuItem> menu=new ArrayList<>();
 
-        ViewProfileMenuItem viewProfileMenuItem=new ViewProfileMenuItem(customer);
+        ViewProfileMenuItem viewProfileMenuItem=new ViewProfileMenuItem(outputWriter,customer);
         CheckOutMenuItem<Book> checkOutBookMenuItem=new CheckOutMenuItem<>(inputReader,outputWriter,bookInventory,customer);
         CheckOutMenuItem<Movie> checkOutMovieMenuItem=new CheckOutMenuItem<>(inputReader,outputWriter,movieInventory,customer);
         ReturnBookMenuItem returnBookMenuItem=new ReturnBookMenuItem(inputReader,outputWriter,bookInventory,customer);

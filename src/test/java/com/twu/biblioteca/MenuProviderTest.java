@@ -56,7 +56,7 @@ public class MenuProviderTest {
         String[] expectedMenuNames={Constants.CHECKED_OUT_DETAILS_MENU_NAME,Constants.CHECKED_OUT_DETAILS_MENU_NAME,
                 Constants.LOG_OUT_MENU_NAME};
 
-        List<MenuItem> output=menuProvider.provideMenu(new Librarian());
+        List<MenuItem> output=menuProvider.provideMenu(new Librarian("Jagriti","LIB-0001","password"));
         List<String> menuNamesOfItemsInOutput=new ArrayList<>();
         for(MenuItem menuItem:output)
             menuNamesOfItemsInOutput.add(menuItem.getMenuName());

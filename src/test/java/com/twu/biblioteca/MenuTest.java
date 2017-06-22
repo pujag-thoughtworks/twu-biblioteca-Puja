@@ -96,5 +96,6 @@ public class MenuTest {
         assertEquals(Arrays.asList(expectedOutput),outputWriter.getOutput());
 
     }
+    
 
 }
