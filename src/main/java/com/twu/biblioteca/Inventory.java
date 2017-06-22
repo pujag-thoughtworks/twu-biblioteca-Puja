@@ -1,7 +1,5 @@
 package com.twu.biblioteca;
 
-import com.twu.resources.BookStorage;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,10 +12,12 @@ class Inventory<ItemType extends Item> {
 
 
     private Map<String, ItemType> titleToItem;
+    private Map<ItemType,Customer> itemToCustomer;
     private List<ItemType> availableItems;
 
     Inventory(List<ItemType> availableItems) {
         titleToItem=new HashMap<>();
+        itemToCustomer =new HashMap<>();
         this.availableItems = availableItems;
         for (ItemType item : availableItems) {
             String itemName = item.getName().toLowerCase();
@@ -29,7 +29,7 @@ class Inventory<ItemType extends Item> {
         String formattedItemName = itemName.toLowerCase();
         ItemType requestedItem = titleToItem.getOrDefault(formattedItemName, null);
 
-        return !(requestedItem == null || !availableItems.contains(requestedItem));
+        return !(requestedItem == null || itemToCustomer.containsKey(requestedItem));
     }
 
     boolean doesItemBelongsToLibrary(String itemName) {
@@ -40,8 +40,9 @@ class Inventory<ItemType extends Item> {
         return !availableItems.contains(itemToReturn);
     }
 
-    void checkoutItem(String itemName) {
+    void checkoutItem(String itemName, Customer loggedInCustomer) {
         ItemType requestedItem = titleToItem.get(itemName.toLowerCase());
+        itemToCustomer.put(requestedItem,loggedInCustomer);
         availableItems.remove(requestedItem);
     }
 

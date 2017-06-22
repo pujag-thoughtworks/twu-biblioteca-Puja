@@ -13,6 +13,7 @@ public class CheckOutMenuItem<ItemType extends Item> implements MenuItem {
     private InputReader inputReader;
     private OutputWriter outputWriter;
     private Inventory<ItemType> inventory;
+    private Customer loggedInCustomer;
 
     private String messageToRequestCheckout;
     private String unsuccessfulCheckoutMessage;
@@ -22,6 +23,7 @@ public class CheckOutMenuItem<ItemType extends Item> implements MenuItem {
         this.inputReader = inputReader;
         this.outputWriter = outputWriter;
         this.inventory = inventory;
+        this.loggedInCustomer=customer;
     }
 
     void setDisplayMessage(String requestCheckoutMsg,String unsuccessfulCheckoutMsg, String successfulCheckoutMsg) {
@@ -39,7 +41,7 @@ public class CheckOutMenuItem<ItemType extends Item> implements MenuItem {
             outputWriter.write(unsuccessfulCheckoutMessage);
             return;
         }
-        inventory.checkoutItem(itemName);
+        inventory.checkoutItem(itemName,loggedInCustomer);
         outputWriter.write(successfulCheckoutMessage);
     }
 

@@ -24,7 +24,7 @@ public class CheckOutMenuItemTest {
         TestOutputWriter outputWriter = new TestOutputWriter();
         CheckOutMenuItem<Book> checkOutMenuItem = new CheckOutMenuItem<>(inputReader, outputWriter, inventory, null);
         checkOutMenuItem.setDisplayMessage(Constants.MESSAGE_TO_REQUEST_CHECKOUT_BOOK,
-                Constants.UNSUCCESSFUL_CHECKOUT_BOOK_MESSAGE,Constants.SUCCESSFUL_CHECKOUT_BOOK_MESSAGE);
+                Constants.UNSUCCESSFUL_CHECKOUT_BOOK_MESSAGE, Constants.SUCCESSFUL_CHECKOUT_BOOK_MESSAGE);
 
         checkOutMenuItem.performAction();
         checkOutMenuItem.performAction();
@@ -32,6 +32,7 @@ public class CheckOutMenuItemTest {
         assertEquals(Constants.SUCCESSFUL_CHECKOUT_BOOK_MESSAGE, outputWriter.getOutput().get(1));
         assertEquals(Constants.UNSUCCESSFUL_CHECKOUT_BOOK_MESSAGE, outputWriter.getOutput().get(3));
     }
+
 
     @Test
     public void shouldDisplayCheckOutStatusForMovies() {
@@ -44,7 +45,7 @@ public class CheckOutMenuItemTest {
         TestOutputWriter outputWriter = new TestOutputWriter();
         CheckOutMenuItem<Movie> checkOutMovie = new CheckOutMenuItem<>(inputReader, outputWriter, inventory, null);
         checkOutMovie.setDisplayMessage(Constants.MESSAGE_TO_REQUEST_CHECKOUT_MOVIE,
-                Constants.UNSUCCESSFUL_CHECKOUT_MOVIE_MESSAGE,Constants.SUCCESSFUL_CHECKOUT_MOVIE_MESSAGE);
+                Constants.UNSUCCESSFUL_CHECKOUT_MOVIE_MESSAGE, Constants.SUCCESSFUL_CHECKOUT_MOVIE_MESSAGE);
 
         checkOutMovie.performAction();
         checkOutMovie.performAction();
@@ -52,6 +53,8 @@ public class CheckOutMenuItemTest {
         assertEquals(Constants.SUCCESSFUL_CHECKOUT_MOVIE_MESSAGE, outputWriter.getOutput().get(1));
         assertEquals(Constants.UNSUCCESSFUL_CHECKOUT_MOVIE_MESSAGE, outputWriter.getOutput().get(3));
     }
+
+
 
 
 }

@@ -20,7 +20,7 @@ public class ReturnBookMenuItemTest {
 
         TestInputReader inputReader = new TestInputReader(bookName + "\n" + bookName);
         TestOutputWriter outputWriter = new TestOutputWriter();
-        inventory.checkoutItem(bookName);
+        inventory.checkoutItem(bookName, new UserDirectory().getCustomer("CUS-0001"));
         ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(inputReader, outputWriter, inventory, null);
 
         returnBookMenuItem.performAction();

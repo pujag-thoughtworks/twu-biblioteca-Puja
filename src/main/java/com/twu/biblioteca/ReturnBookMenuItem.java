@@ -16,11 +16,13 @@ public class ReturnBookMenuItem implements MenuItem {
     private InputReader inputReader;
     private OutputWriter outputWriter;
     private Inventory<Book> inventory;
+    private Customer loggedInCustomer;
 
     ReturnBookMenuItem(InputReader inputReader, OutputWriter outputWriter, Inventory<Book> inventory, Customer customer) {
         this.inputReader = inputReader;
         this.outputWriter = outputWriter;
         this.inventory = inventory;
+        this.loggedInCustomer=customer;
     }
 
     @Override

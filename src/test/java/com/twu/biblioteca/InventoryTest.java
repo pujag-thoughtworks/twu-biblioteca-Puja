@@ -18,7 +18,7 @@ public class InventoryTest {
         List<Book> availableBooks = inventory.getAvailableItems();
         Book requestedBook = availableBooks.get(0);
 
-        inventory.checkoutItem(requestedBook.getName());
+        inventory.checkoutItem(requestedBook.getName(), new UserDirectory().getCustomer("CUS-0001"));
 
         assertTrue(!availableBooks.contains(requestedBook));
     }
@@ -28,7 +28,7 @@ public class InventoryTest {
         Inventory<Book> inventory = new Inventory<>(new BookStorage().getBookList());
         List<Book> availableBooks = inventory.getAvailableItems();
         Book requestedBook = availableBooks.get(0);
-        inventory.checkoutItem(requestedBook.getName());
+        inventory.checkoutItem(requestedBook.getName(), new UserDirectory().getCustomer("CUS-0001"));
 
         boolean output = inventory.isItemAvailableForCheckout(requestedBook.getName());
 
@@ -41,7 +41,7 @@ public class InventoryTest {
         List<Book> availableBooks = inventory.getAvailableItems();
         Book requestedBook = availableBooks.get(0);
 
-        inventory.checkoutItem(requestedBook.getName());
+        inventory.checkoutItem(requestedBook.getName(), new UserDirectory().getCustomer("CUS-0001"));
         inventory.returnItem(requestedBook.getName());
 
         assertTrue(availableBooks.contains(requestedBook));
