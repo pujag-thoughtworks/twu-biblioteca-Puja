@@ -5,8 +5,6 @@ package com.twu.biblioteca;
  */
 public class Book implements Item {
 
-    private static String ITEM_NAME="books";
-
     private String name;
     private String author;
     private int publishingYear;
@@ -19,11 +17,6 @@ public class Book implements Item {
 
     public String getName() {
         return name;
-    }
-
-    @Override
-    public  String getItemName() {
-        return ITEM_NAME;
     }
 
     public String toString() {
