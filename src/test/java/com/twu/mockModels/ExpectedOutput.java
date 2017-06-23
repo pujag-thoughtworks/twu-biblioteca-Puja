@@ -27,7 +27,7 @@ public class ExpectedOutput {
 
     public List<String> getListBooksOutput() {
         List<String> output = new ArrayList<>();
-        output.add(Constants.LIST_BOOK_DESCRIPTION_MESSAGE);
+        output.add("Available Books are:");
         BookStorage bookStorage = new BookStorage();
         for (Book book : bookStorage.getBookList())
             output.add(book.toString());

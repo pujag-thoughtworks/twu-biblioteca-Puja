@@ -8,7 +8,10 @@ import com.twu.inputOutput.OutputWriter;
  */
 public class LogOutMenuItem implements MenuItem {
 
+
     public static final String LOG_OUT_MESSAGE="Successfully logged out";
+    public static final String MENU_NAME ="Log out" ;
+
     private OutputWriter outputWriter;
 
     public LogOutMenuItem(OutputWriter outputWriter) {
@@ -22,6 +25,6 @@ public class LogOutMenuItem implements MenuItem {
 
     @Override
     public String getMenuName() {
-        return Constants.LOG_OUT_MENU_NAME;
+        return MENU_NAME;
     }
 }

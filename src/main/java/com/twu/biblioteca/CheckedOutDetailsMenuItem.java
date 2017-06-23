@@ -8,7 +8,7 @@ import java.util.Map;
  * Class that displays the checked out item details to the librarian
  */
 public class CheckedOutDetailsMenuItem<T extends Item> implements MenuItem {
-    private static final String CHECKED_OUT_DETAILS_MENU_NAME=" View Checked out";
+    public static final String MENU_NAME =" View Checked out";
     private static final String NO_CHECK_OUTS="No items are checked out";
     private OutputWriter outputWriter;
     private Inventory<T> inventory;
@@ -38,6 +38,6 @@ public class CheckedOutDetailsMenuItem<T extends Item> implements MenuItem {
 
     @Override
     public String getMenuName() {
-        return CHECKED_OUT_DETAILS_MENU_NAME + " " + itemName;
+        return MENU_NAME + " " + itemName;
     }
 }

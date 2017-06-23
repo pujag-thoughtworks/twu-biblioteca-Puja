@@ -7,32 +7,33 @@ import java.util.List;
 /**
  * List the available books with the necessary details
  */
-public class ListMenuItem<ItemType extends Item> implements MenuItem {
+public class ListMenuItem<T extends Item> implements MenuItem {
 
     public static final String MENU_NAME = "List";
 
-    private String descriptionMessage;
     private OutputWriter outputWriter;
-    private List<ItemType> itemList;
+    private List<T> itemList;
+    private String itemName;
 
-    ListMenuItem(OutputWriter outputWriter, Inventory<ItemType> inventory) {
+    ListMenuItem(OutputWriter outputWriter, Inventory<T> inventory) {
         this.outputWriter = outputWriter;
         itemList = inventory.getAvailableItems();
     }
 
-    public void setDescriptionMessage(String message) {
-        descriptionMessage=message;
+    public void setItemName(String itemName) {
+        this.itemName=itemName;
     }
 
     public void performAction() {
-        outputWriter.write(descriptionMessage);
-        for (ItemType item: itemList)
+        outputWriter.write("Available " +itemName +" are:");
+        for (T item: itemList)
             outputWriter.write(item.toString());
     }
 
+
     @Override
     public String getMenuName() {
-        return MENU_NAME;
+        return MENU_NAME + " " + itemName;
     }
 
 }

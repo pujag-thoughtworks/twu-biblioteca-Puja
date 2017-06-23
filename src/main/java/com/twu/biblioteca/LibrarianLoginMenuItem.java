@@ -6,9 +6,9 @@ import com.twu.inputOutput.OutputWriter;
 /**
  * Librarian login page
  */
-public class LibrarianLoginMenuItem  implements MenuItem{
+public class LibrarianLoginMenuItem implements MenuItem {
 
-    static final String LIBRARIAN_LOGIN_MENU_NAME = "Librarian Login Menu";
+    static final String MENU_NAME = "Librarian Login Menu";
 
     private InputReader inputReader;
     private OutputWriter outputWriter;
@@ -16,11 +16,11 @@ public class LibrarianLoginMenuItem  implements MenuItem{
     private UserAuthentication userAuthentication;
 
 
-    public LibrarianLoginMenuItem(InputReader inputReader, OutputWriter outputWriter,MenuProvider menuProvider) {
+    public LibrarianLoginMenuItem(InputReader inputReader, OutputWriter outputWriter, MenuProvider menuProvider) {
         this.inputReader = inputReader;
         this.outputWriter = outputWriter;
         this.menuProvider = menuProvider;
-        this.userAuthentication=new UserAuthentication(inputReader,outputWriter);
+        this.userAuthentication = new UserAuthentication(inputReader, outputWriter);
     }
 
     @Override
@@ -36,6 +36,6 @@ public class LibrarianLoginMenuItem  implements MenuItem{
 
     @Override
     public String getMenuName() {
-        return Constants.LIBRARIAN_LOGIN_MENU_NAME;
+        return MENU_NAME;
     }
 }

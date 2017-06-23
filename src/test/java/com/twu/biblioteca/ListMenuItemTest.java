@@ -22,10 +22,10 @@ public class ListMenuItemTest {
         BookStorage bookStorage = new BookStorage();
         TestOutputWriter outputWriter = new TestOutputWriter();
         ListMenuItem<Book> listBookMenuItem = new ListMenuItem<>(outputWriter, new Inventory<>(bookStorage.getBookList()));
-        listBookMenuItem.setDescriptionMessage(Constants.LIST_BOOK_DESCRIPTION_MESSAGE);
+        listBookMenuItem.setItemName("Books");
 
         List<String> expectedOutput = new ArrayList<>();
-        expectedOutput.add(Constants.LIST_BOOK_DESCRIPTION_MESSAGE);
+        expectedOutput.add("Available Books are:");
         for (Book book : bookStorage.getBookList())
             expectedOutput.add(book.toString());
 
@@ -40,10 +40,10 @@ public class ListMenuItemTest {
         MovieStorage movieStorage = new MovieStorage();
         TestOutputWriter outputWriter = new TestOutputWriter();
         ListMenuItem<Movie> listMovieMenuItem = new ListMenuItem<>(outputWriter, new Inventory<>(movieStorage.getMovieList()));
-        listMovieMenuItem.setDescriptionMessage(Constants.LIST_MOVIE_DESCRIPTION_MESSAGE);
+        listMovieMenuItem.setItemName("movies");
 
         List<String> expectedOutput = new ArrayList<>();
-        expectedOutput.add(Constants.LIST_MOVIE_DESCRIPTION_MESSAGE);
+        expectedOutput.add("Available movies are:");
         for (Movie movie : movieStorage.getMovieList())
             expectedOutput.add(movie.toString());
 

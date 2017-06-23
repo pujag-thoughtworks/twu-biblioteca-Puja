@@ -8,7 +8,7 @@ import com.twu.inputOutput.OutputWriter;
  */
 public class CustomerLoginMenuItem<T extends User> implements MenuItem {
 
-    static final String CUSTOMER_LOGIN_MENU_NAME = "Customer Login Menu";
+    public static final String MENU_NAME = "Customer Login";
 
     private InputReader inputReader;
     private OutputWriter outputWriter;
@@ -19,7 +19,7 @@ public class CustomerLoginMenuItem<T extends User> implements MenuItem {
         this.inputReader = inputReader;
         this.outputWriter = outputWriter;
         this.menuProvider = menuProvider;
-        this.userAuthentication=new UserAuthentication(inputReader,outputWriter);
+        this.userAuthentication = new UserAuthentication(inputReader, outputWriter);
     }
 
     @Override
@@ -28,13 +28,13 @@ public class CustomerLoginMenuItem<T extends User> implements MenuItem {
         User loggedInUser = userAuthentication.authenticateUser(Customer.USER_TYPE);
         if (loggedInUser == null)
             return;
-        Menu customerSpecificMenu = new Menu(inputReader, outputWriter, menuProvider.provideMenu((Customer)loggedInUser));
+        Menu customerSpecificMenu = new Menu(inputReader, outputWriter, menuProvider.provideMenu((Customer) loggedInUser));
         customerSpecificMenu.displayMenu();
         customerSpecificMenu.performSelectedAction();
     }
 
     @Override
     public String getMenuName() {
-        return CUSTOMER_LOGIN_MENU_NAME;
+        return MENU_NAME;
     }
 }

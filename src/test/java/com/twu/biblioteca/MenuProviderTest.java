@@ -21,8 +21,8 @@ public class MenuProviderTest {
     public void shouldProvideDefaultMenu() {
 
         MenuProvider menuProvider=new MenuProvider(new TestInputReader(""),new TestOutputWriter());
-        String[] expectedMenuNames= {ListMenuItem.MENU_NAME,ListMenuItem.MENU_NAME,Constants.CUSTOMER_LOGIN_MENU_NAME,
-                Constants.LIBRARIAN_LOGIN_MENU_NAME, QuitMenuItem.MENU_NAME};
+        String[] expectedMenuNames= {ListMenuItem.MENU_NAME + " Books",ListMenuItem.MENU_NAME + " Movies",CustomerLoginMenuItem.MENU_NAME,
+                LibrarianLoginMenuItem.MENU_NAME, QuitMenuItem.MENU_NAME};
 
         List<MenuItem> output=menuProvider.provideMenu();
         List<String> menuNamesOfItemsInOutput=new ArrayList<>();
@@ -37,8 +37,8 @@ public class MenuProviderTest {
     public void shouldProvideCustomerSpecificMenu() {
 
         MenuProvider menuProvider=new MenuProvider(new TestInputReader(""),new TestOutputWriter());
-        String[] expectedMenuNames= {Constants.VIEW_PROFILE_MENU_NAME,ListMenuItem.MENU_NAME,ListMenuItem.MENU_NAME,CheckOutMenuItem.MENU_NAME,
-                CheckOutMenuItem.MENU_NAME,ReturnBookMenuItem.MENU_NAME,Constants.LOG_OUT_MENU_NAME };
+        String[] expectedMenuNames= {ViewProfileMenuItem.MENU_NAME,ListMenuItem.MENU_NAME +" Books",ListMenuItem.MENU_NAME +" Movies",CheckOutMenuItem.MENU_NAME + " Book",
+                CheckOutMenuItem.MENU_NAME +" Movie",ReturnBookMenuItem.MENU_NAME,LogOutMenuItem.MENU_NAME};
 
         List<MenuItem> output=menuProvider.provideMenu(new Customer("Ram","ab@gmail.com","Punjab","CUS-0008","password"));
         List<String> menuNamesOfItemsInOutput=new ArrayList<>();
@@ -53,8 +53,8 @@ public class MenuProviderTest {
     public void shouldProvideLibrarianSpecificMenu() {
 
         MenuProvider menuProvider=new MenuProvider(new TestInputReader(""),new TestOutputWriter());
-        String[] expectedMenuNames={Constants.CHECKED_OUT_DETAILS_MENU_NAME,Constants.CHECKED_OUT_DETAILS_MENU_NAME,
-                Constants.LOG_OUT_MENU_NAME};
+        String[] expectedMenuNames={CheckedOutDetailsMenuItem.MENU_NAME + " Books",CheckedOutDetailsMenuItem.MENU_NAME +" Movies",
+                LogOutMenuItem.MENU_NAME};
 
         List<MenuItem> output=menuProvider.provideMenu(new Librarian("Jagriti","LIB-0001","password"));
         List<String> menuNamesOfItemsInOutput=new ArrayList<>();
