@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 public class UserDirectoryTest {
 
     @Test
-    public void shouldAssociateUserWithLibrary() {
+    public void shouldAssociateUserWithLibraryNo() {
 
         UserDirectory userDirectory=new UserDirectory();
         RegisteredUsers registeredUsers=new RegisteredUsers();
@@ -21,15 +21,5 @@ public class UserDirectoryTest {
         assertEquals(expectedUser,user);
     }
 
-    @Test
-    public void shouldKnowIfAUserIsLibrarian() {
-        UserDirectory userDirectory=new UserDirectory();
-        RegisteredUsers registeredUsers=new RegisteredUsers();
-        User librarian=registeredUsers.getCustomers().get(4);
-        User customer=registeredUsers.getCustomers().get(0);
-
-        assertTrue(userDirectory.isLibrarian(librarian.getLibraryNo()));
-        assertFalse(userDirectory.isLibrarian(customer.getLibraryNo()));
-    }
 
 }

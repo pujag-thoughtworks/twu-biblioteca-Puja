@@ -8,23 +8,19 @@ import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-
 /**
- * Tests customer login menu item.
+ * Tests Librarian login menu item
  */
-public class CustomerLoginMenuItemTest {
-
-
-
+public class LibrarianLoginMenuItemTest {
     @Test
-    public void shouldPerformSelectedActionFromCustomerSpecificMenu() {
+    public void shouldPerformSelectedActionFromLibrarianSpecificMenu() {
 
-        TestInputReader testInputReader=new TestInputReader("CUS-0001\npassword\n7");
+        TestInputReader testInputReader=new TestInputReader("LIB-0001\npassword\n3");
         TestOutputWriter testOutputWriter=new TestOutputWriter();
-        CustomerLoginMenuItem customerLoginMenu=new CustomerLoginMenuItem(testInputReader,testOutputWriter,
+        LibrarianLoginMenuItem librarianLoginMenu=new LibrarianLoginMenuItem(testInputReader,testOutputWriter,
                 new MenuProvider(testInputReader,testOutputWriter));
 
-        customerLoginMenu.performAction();
+        librarianLoginMenu.performAction();
         List<String> displayOutput=testOutputWriter.getOutput();
 
         assertTrue(displayOutput.contains(LogOutMenuItem.LOG_OUT_MESSAGE));

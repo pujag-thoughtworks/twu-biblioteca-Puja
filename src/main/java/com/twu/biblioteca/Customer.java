@@ -4,6 +4,8 @@ package com.twu.biblioteca;
  * Created by pujag on 6/21/17.
  */
 public class Customer implements User {
+    static final String USER_TYPE="Customer";
+
     private String name;
     private String email;
     private String address;
@@ -25,6 +27,11 @@ public class Customer implements User {
 
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getType() {
+        return USER_TYPE;
     }
 
     String[] getProfile() {

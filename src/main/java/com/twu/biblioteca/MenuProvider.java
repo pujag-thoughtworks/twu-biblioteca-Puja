@@ -39,7 +39,7 @@ public class MenuProvider {
     List<MenuItem> provideMenu() {
         List<MenuItem> menu = new ArrayList<>();
         CustomerLoginMenuItem customerLoginMenuItem = new CustomerLoginMenuItem(inputReader, outputWriter, this);
-        LibrarianLoginMenuItem librarianLoginMenuItem = new LibrarianLoginMenuItem(inputReader, outputWriter);
+        LibrarianLoginMenuItem librarianLoginMenuItem = new LibrarianLoginMenuItem(inputReader, outputWriter,this);
         QuitMenuItem quitMenuItem = new QuitMenuItem(outputWriter);
 
 
@@ -58,7 +58,9 @@ public class MenuProvider {
 
         ViewProfileMenuItem viewProfileMenuItem = new ViewProfileMenuItem(outputWriter, customer);
         CheckOutMenuItem<Book> checkOutBookMenuItem = new CheckOutMenuItem<>(inputReader, outputWriter, bookInventory, customer);
+        checkOutBookMenuItem.setItemType("Book");
         CheckOutMenuItem<Movie> checkOutMovieMenuItem = new CheckOutMenuItem<>(inputReader, outputWriter, movieInventory, customer);
+        checkOutMovieMenuItem.setItemType("Movie");
         ReturnBookMenuItem returnBookMenuItem = new ReturnBookMenuItem(inputReader, outputWriter, bookInventory, customer);
 
         menu.add(viewProfileMenuItem);
@@ -76,7 +78,9 @@ public class MenuProvider {
         List<MenuItem> menu = new ArrayList<>();
 
         CheckedOutDetailsMenuItem<Book> checkedOutBookDetailsMenuItem = new CheckedOutDetailsMenuItem<>(outputWriter, bookInventory);
+        checkedOutBookDetailsMenuItem.setItemName("Book");
         CheckedOutDetailsMenuItem<Movie> checkedOutMovieDetailsMenuItem = new CheckedOutDetailsMenuItem<>(outputWriter, movieInventory);
+        checkedOutMovieDetailsMenuItem.setItemName("Movie");
 
         menu.add(checkedOutBookDetailsMenuItem);
         menu.add(checkedOutMovieDetailsMenuItem);

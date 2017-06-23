@@ -12,29 +12,31 @@ import java.util.Map;
  */
 public class UserDirectory {
 
-    private static String LIBRARIAN_IDENTIFIER="LIB";
-
-    Map<String,Customer> customerDirectory;
+    Map<String, Customer> customerDirectory;
+    Map<String, Librarian> librarianDirectory;
 
     UserDirectory() {
-        RegisteredUsers registeredUsers=new RegisteredUsers();
-        List<Customer> userList=registeredUsers.getCustomers();
-        customerDirectory =new HashMap<>();
-        for(Customer customer:userList) {
-            customerDirectory.put(customer.getLibraryNo(),customer);
+        RegisteredUsers registeredUsers = new RegisteredUsers();
+        List<Customer> userList = registeredUsers.getCustomers();
+        customerDirectory = new HashMap<>();
+        for (Customer customer : userList) {
+            customerDirectory.put(customer.getLibraryNo(), customer);
         }
+        librarianDirectory = new HashMap<>();
+        librarianDirectory.put("LIB-0001", new Librarian("Jagriti", "LIB-0001", "password"));
+        librarianDirectory.put("LIB-0002",new Librarian("Naman","LIB-0002","password"));
 
     }
 
     public Customer getCustomer(String libraryNo) {
-        return customerDirectory.getOrDefault(libraryNo,null);
+        return customerDirectory.getOrDefault(libraryNo, null);
     }
 
-    public boolean isLibrarian(String libraryNo) {
-        return (libraryNo.contains(LIBRARIAN_IDENTIFIER));
+    public Librarian getLibrarian(String libraryNo) {
+        return librarianDirectory.getOrDefault(libraryNo,null);
     }
 
-    public boolean contains(String libraryNo) {
-        return customerDirectory.containsKey(libraryNo);
-    }
+
+
+
 }

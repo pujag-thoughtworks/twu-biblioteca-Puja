@@ -1,9 +1,11 @@
 package com.twu.biblioteca;
 
 /**
- * Created by pujag on 6/21/17.
+ * Descrobes the features of Librarian
  */
 public class Librarian implements User {
+
+    static final String USER_TYPE="librarian";
 
     private String name;
     private String libraryNo;
@@ -23,6 +25,11 @@ public class Librarian implements User {
     @Override
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getType() {
+        return USER_TYPE;
     }
 
     String getName() {
