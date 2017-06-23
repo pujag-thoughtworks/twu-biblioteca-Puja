@@ -1,5 +1,8 @@
 package com.twu.biblioteca;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by pujag on 6/21/17.
  */
@@ -13,7 +16,8 @@ public class Customer implements User {
     private String password;
 
     public Customer(String name, String email, String address, String libraryNo, String password) {
-
+        if(!isLibraryNoInFormat(libraryNo))
+            throw new IllegalArgumentException();
         this.name = name;
         this.email = email;
         this.address = address;
@@ -21,17 +25,17 @@ public class Customer implements User {
         this.password = password;
     }
 
+    private boolean isLibraryNoInFormat(String libraryNo) {
+    Pattern requiredFormat = Pattern.compile("\\w{3}\\-\\w{4}");
+    Matcher matcher = requiredFormat.matcher(libraryNo);
+        return matcher.matches(); }
+
     public String getLibraryNo() {
         return libraryNo;
     }
 
     public String getPassword() {
         return password;
-    }
-
-    @Override
-    public String getType() {
-        return USER_TYPE;
     }
 
     String[] getProfile() {
@@ -46,3 +50,4 @@ public class Customer implements User {
                 && libraryNo.equals(customer.libraryNo) && password.equals(customer.password));
     }
 }
+

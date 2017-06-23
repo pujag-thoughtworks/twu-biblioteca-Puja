@@ -9,6 +9,12 @@ import static org.junit.Assert.assertEquals;
  */
 public class LibrarianTest {
 
+    @Test (expected = IllegalArgumentException.class)
+    public void libraryNumberShouldBeInFormat() {
+        Librarian librarian=new Librarian("Jagriti","7766kkkk","password");
+
+    }
+
     @Test
     public void shouldGetLibraryNo() {
         Librarian librarian=new Librarian("Jagriti","LIB-0001","password");

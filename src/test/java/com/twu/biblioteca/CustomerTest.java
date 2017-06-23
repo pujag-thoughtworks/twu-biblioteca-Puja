@@ -12,11 +12,11 @@ import static org.junit.Assert.assertEquals;
  */
 public class CustomerTest {
 
-    /* TODO: implement constraints on library no
-    @Test
-    public void libraryNumberShouldBeInGivenFormat() {
-        User customer=new User("Ram","ram@gmail.com","New Delhi","")
-    } */
+
+    @Test (expected = IllegalArgumentException.class)
+    public void libraryNumberShouldBeInFormat() {
+        Customer customer=new Customer("Ram","ram@gmail.com","New Delhi","kkkkkkkk","pwd");
+    }
 
     @Test
     public void shouldGetPassword() {
