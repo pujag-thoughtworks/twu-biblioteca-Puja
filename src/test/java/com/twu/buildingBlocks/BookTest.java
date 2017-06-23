@@ -1,5 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.buildingBlocks;
 
+import com.twu.buildingBlocks.Book;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

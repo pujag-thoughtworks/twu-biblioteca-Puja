@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.buildingBlocks;
 
 /**
  * Interface for various library items.

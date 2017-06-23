@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.buildingBlocks.User;
 import com.twu.resources.RegisteredUsers;
 import org.junit.Test;
 

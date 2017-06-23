@@ -1,5 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.buildingBlocks;
 
+import com.twu.buildingBlocks.Customer;
 import org.junit.Test;
 
 import java.util.Arrays;

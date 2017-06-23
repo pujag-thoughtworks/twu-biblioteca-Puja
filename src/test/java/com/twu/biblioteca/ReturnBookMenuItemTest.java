@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.buildingBlocks.Book;
 import com.twu.mockModels.TestInputReader;
 import com.twu.mockModels.TestOutputWriter;
 import com.twu.resources.BookStorage;

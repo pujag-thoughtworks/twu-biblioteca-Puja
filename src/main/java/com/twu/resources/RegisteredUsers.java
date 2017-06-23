@@ -1,7 +1,6 @@
 package com.twu.resources;
 
-import com.twu.biblioteca.Customer;
-import com.twu.biblioteca.User;
+import com.twu.buildingBlocks.Customer;
 
 import java.util.ArrayList;
 import java.util.List;

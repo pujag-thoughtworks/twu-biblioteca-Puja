@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.buildingBlocks.Customer;
+import com.twu.buildingBlocks.Librarian;
 import com.twu.mockModels.TestInputReader;
 import com.twu.mockModels.TestOutputWriter;
 import org.junit.Test;

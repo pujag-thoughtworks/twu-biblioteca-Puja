@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.buildingBlocks;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
  * Created by pujag on 6/21/17.
  */
 public class Customer implements User {
-    static final String USER_TYPE="Customer";
+   public static final String USER_TYPE="Customer";
 
     private String name;
     private String email;
@@ -38,7 +38,7 @@ public class Customer implements User {
         return password;
     }
 
-    String[] getProfile() {
+    public String[] getProfile() {
         return new String[]{ name,email,address,libraryNo,};
     }
 

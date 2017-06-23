@@ -1,4 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.buildingBlocks;
+
+import com.twu.buildingBlocks.User;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -8,7 +10,7 @@ import java.util.regex.Pattern;
  */
 public class Librarian implements User {
 
-    static final String USER_TYPE="librarian";
+    public static final String USER_TYPE="librarian";
 
     private String name;
     private String libraryNo;

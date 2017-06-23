@@ -1,5 +1,7 @@
-package com.twu.biblioteca;
+package com.twu.buildingBlocks;
 
+import com.twu.buildingBlocks.Movie;
+import com.twu.buildingBlocks.MovieRating;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

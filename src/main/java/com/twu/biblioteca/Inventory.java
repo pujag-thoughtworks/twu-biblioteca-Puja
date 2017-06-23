@@ -1,5 +1,8 @@
 package com.twu.biblioteca;
 
+import com.twu.buildingBlocks.Customer;
+import com.twu.buildingBlocks.Item;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

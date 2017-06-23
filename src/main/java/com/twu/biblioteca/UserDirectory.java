@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.buildingBlocks.Customer;
+import com.twu.buildingBlocks.Librarian;
 import com.twu.resources.RegisteredUsers;
 
 import java.util.HashMap;

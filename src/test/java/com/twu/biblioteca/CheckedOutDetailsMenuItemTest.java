@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.buildingBlocks.Customer;
+import com.twu.buildingBlocks.Movie;
 import com.twu.mockModels.TestOutputWriter;
 import com.twu.resources.MovieStorage;
 import org.junit.Test;

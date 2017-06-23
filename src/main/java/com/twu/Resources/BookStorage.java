@@ -1,6 +1,6 @@
 package com.twu.resources;
 
-import com.twu.biblioteca.Book;
+import com.twu.buildingBlocks.Book;
 
 import java.util.ArrayList;
 import java.util.List;

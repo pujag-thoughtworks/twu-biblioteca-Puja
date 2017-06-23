@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.buildingBlocks.Book;
+import com.twu.buildingBlocks.Customer;
 import com.twu.inputOutput.InputReader;
 import com.twu.inputOutput.OutputWriter;
 

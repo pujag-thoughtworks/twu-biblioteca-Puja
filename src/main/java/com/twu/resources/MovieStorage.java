@@ -1,7 +1,7 @@
 package com.twu.resources;
 
-import com.twu.biblioteca.Movie;
-import com.twu.biblioteca.MovieRating;
+import com.twu.buildingBlocks.Movie;
+import com.twu.buildingBlocks.MovieRating;
 
 import java.util.ArrayList;
 import java.util.List;

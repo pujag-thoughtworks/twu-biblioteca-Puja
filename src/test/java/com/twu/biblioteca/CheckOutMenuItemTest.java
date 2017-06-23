@@ -1,9 +1,9 @@
 package com.twu.biblioteca;
 
+import com.twu.buildingBlocks.Book;
 import com.twu.mockModels.TestInputReader;
 import com.twu.mockModels.TestOutputWriter;
 import com.twu.resources.BookStorage;
-import com.twu.resources.MovieStorage;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

@@ -1,5 +1,8 @@
 package com.twu.biblioteca;
 
+import com.twu.buildingBlocks.Book;
+import com.twu.buildingBlocks.Customer;
+import com.twu.buildingBlocks.Movie;
 import com.twu.resources.BookStorage;
 import com.twu.resources.MovieStorage;
 import org.junit.Test;
