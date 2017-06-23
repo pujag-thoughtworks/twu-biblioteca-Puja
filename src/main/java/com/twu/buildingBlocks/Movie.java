@@ -37,8 +37,7 @@ public class Movie implements Item {
     }
 
     public String toString() {
-        String representation= String.format("%-30s%-30s%-15s%-15s", name, director, year, this.getRating());
-        return representation;
+       return String.format("%-30s%-30s%-15s%-15s", name, director, year, this.getRating()+"");
     }
 
 
