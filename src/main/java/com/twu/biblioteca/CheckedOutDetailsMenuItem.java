@@ -5,11 +5,14 @@ import com.twu.inputOutput.OutputWriter;
 import java.util.Map;
 
 /**
- * Created by pujag on 6/21/17.
+ * Class that displays the checked out item details to the librarian
  */
 public class CheckedOutDetailsMenuItem<T extends Item> implements MenuItem {
+    private static final String CHECKED_OUT_DETAILS_MENU_NAME=" View Checked out";
+    private static final String NO_CHECK_OUTS="No items are checked out";
     private OutputWriter outputWriter;
     private Inventory<T> inventory;
+    private String itemName;
 
     CheckedOutDetailsMenuItem(OutputWriter outputWriter, Inventory<T> inventory) {
         this.outputWriter = outputWriter;
@@ -19,6 +22,8 @@ public class CheckedOutDetailsMenuItem<T extends Item> implements MenuItem {
     @Override
     public void performAction() {
         Map<T, Customer> checkedOutItemsMap = inventory.getCheckOutDetails();
+        if(checkedOutItemsMap.isEmpty())
+            outputWriter.write(NO_CHECK_OUTS);
         for (Map.Entry<T, Customer> entry : checkedOutItemsMap.entrySet()) {
             T item = entry.getKey();
             Customer customer = entry.getValue();
@@ -27,9 +32,12 @@ public class CheckedOutDetailsMenuItem<T extends Item> implements MenuItem {
         }
 
     }
+    public void setItemName(String itemName) {
+        this.itemName=itemName;
+    }
 
     @Override
     public String getMenuName() {
-        return Constants.CHECKED_OUT_DETAILS_MENU_NAME;
+        return CHECKED_OUT_DETAILS_MENU_NAME + " " + itemName;
     }
 }

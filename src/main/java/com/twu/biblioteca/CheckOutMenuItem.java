@@ -6,48 +6,47 @@ import com.twu.inputOutput.OutputWriter;
 /**
  * MenuItem to facilitate check-out of books.
  */
-public class CheckOutMenuItem<ItemType extends Item> implements MenuItem {
+public class CheckOutMenuItem<T extends Item> implements MenuItem {
 
-    public static final String MENU_NAME = "Check out ";
+    public static final String MENU_NAME = "Check out";
 
     private InputReader inputReader;
     private OutputWriter outputWriter;
-    private Inventory<ItemType> inventory;
+    private Inventory<T> inventory;
     private Customer loggedInCustomer;
+    private String itemName;
 
-    private String messageToRequestCheckout;
-    private String unsuccessfulCheckoutMessage;
-    private String successfulCheckoutMessage;
+    public static final  String MESSAGE_TO_CHECKOUT="Please enter the item name for check-out";
+    public static final String UNSUCCESSFUL_CHECKOUT_MESSAGE ="The required item is not available" ;
+    public static final String SUCCESSFUL_CHECKOUT_MESSAGE ="Thank you! Enjoy your selection" ;
 
-    CheckOutMenuItem(InputReader inputReader, OutputWriter outputWriter, Inventory<ItemType> inventory, Customer customer) {
+    CheckOutMenuItem(InputReader inputReader, OutputWriter outputWriter, Inventory<T> inventory, Customer customer) {
         this.inputReader = inputReader;
         this.outputWriter = outputWriter;
         this.inventory = inventory;
         this.loggedInCustomer=customer;
     }
 
-    void setDisplayMessage(String requestCheckoutMsg,String unsuccessfulCheckoutMsg, String successfulCheckoutMsg) {
-        messageToRequestCheckout=requestCheckoutMsg;
-        unsuccessfulCheckoutMessage=unsuccessfulCheckoutMsg;
-        successfulCheckoutMessage=successfulCheckoutMsg;
-    }
-
     @Override
     public void performAction() {
 
-        outputWriter.write(messageToRequestCheckout);
+        outputWriter.write(MESSAGE_TO_CHECKOUT);
         String itemName = inputReader.read();
         if (!inventory.isItemAvailableForCheckout(itemName)) {
-            outputWriter.write(unsuccessfulCheckoutMessage);
+            outputWriter.write(UNSUCCESSFUL_CHECKOUT_MESSAGE);
             return;
         }
         inventory.checkoutItem(itemName,loggedInCustomer);
-        outputWriter.write(successfulCheckoutMessage);
+        outputWriter.write(SUCCESSFUL_CHECKOUT_MESSAGE);
+    }
+
+    public void setItemType(String itemName) {
+        this.itemName=itemName;
     }
 
     @Override
     public String getMenuName() {
-        return MENU_NAME;
+        return MENU_NAME + " " + itemName ;
     }
 
 }

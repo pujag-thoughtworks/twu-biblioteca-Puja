@@ -7,8 +7,8 @@ import java.util.List;
  * Created by pujag on 6/20/17.
  */
 public interface User {
-
     String getLibraryNo();
     String getPassword();
+    String getType();
 
 }
